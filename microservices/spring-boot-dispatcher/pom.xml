@@ -63,6 +63,8 @@
 
         <!--apache dependencies-->
         <org.apache.commons.io.version>2.13.0</org.apache.commons.io.version>
+        <spring-data-bom.version>2023.1.5</spring-data-bom.version> <!-- in line with boot -->
+        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version> <!-- in line with boot / hibernate-core -->
         <org.apache.poi.version>5.2.2</org.apache.poi.version>
 
         <!--google dependencies-->
@@ -134,9 +136,21 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-bom</artifactId>
+                <version>${spring-data-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.hateoas</groupId>
                 <artifactId>spring-hateoas</artifactId>
                 <version>${spring-hateoas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>${jakarta.persistence-api.version}</version>
             </dependency>
 
             <!--google dependencies-->
@@ -153,6 +167,14 @@
                 <version>5.3.1</version>
                 <scope>test</scope>
             </dependency>
+
+
+            <dependency>
+                <groupId>com.dispatcher.service</groupId>
+                <artifactId>spring-boot-dispatcher-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

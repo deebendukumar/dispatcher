@@ -9,7 +9,6 @@
     </parent>
     <groupId>com.dispatcher.service</groupId>
     <artifactId>spring-boot-dispatcher-service</artifactId>
-    <version>1.0.0</version>
     <name>spring-boot-dispatcher-service</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -24,7 +23,16 @@
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
