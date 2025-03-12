@@ -28,7 +28,7 @@
         <mxCell id="NBEOzvU_pRrIGNWXIiWT-11" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;API Server&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="540" y="420" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="NBEOzvU_pRrIGNWXIiWT-12" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;dashed=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+        <mxCell id="NBEOzvU_pRrIGNWXIiWT-12" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;dashed=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="790" y="119" width="330" height="251" as="geometry" />
         </mxCell>
         <mxCell id="NBEOzvU_pRrIGNWXIiWT-13" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;span&gt;Categories&lt;/span&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#333333;fontStyle=0" vertex="1" parent="1">
@@ -123,6 +123,9 @@
         </mxCell>
         <mxCell id="NBEOzvU_pRrIGNWXIiWT-45" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Observability&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1360" y="370" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NBEOzvU_pRrIGNWXIiWT-46" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;POS&lt;/b&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="700" width="150" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
