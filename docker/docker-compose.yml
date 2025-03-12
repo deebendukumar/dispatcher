@@ -1,0 +1,52 @@
+version: '3'
+#all port number should be exposed appending 9
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./conf/mariadb/my.cnf:/etc/mysql/mariadb.conf.d/my.cnf:ro
+    ports:
+      - "9306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: RootDB
+      MYSQL_USER: dispatcher
+      MYSQL_PASSWORD: dispatcherrw
+      MYSQL_DATABASE: dispatcher
+      MYSQL_CHARSET: utf8
+      MYSQL_COLLATION: utf8_general_ci
+    networks:
+      - portainer
+
+  keycloak:
+    depends_on:
+      - mariadb
+    image: quay.io/keycloak/keycloak:legacy
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    container_name: keycloak
+    restart: unless-stopped
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=Pa55w0rd
+      - DB_VENDOR=mariadb
+      - DB_ADDR=mariadb
+      - DB_DATABASE=keycloak
+      - DB_USER=dispatcher
+      - DB_PASSWORD=dispatcherrw
+      - KEYCLOAK_LOGLEVEL=ERROR
+      - PROXY_ADDRESS_FORWARDING=true
+      # - DB_PORT: 9306
+    ports:
+      - "9080:8080"
+    networks:
+      - portainer
+
+networks:
+  portainer:
+    name: portainer
+    external: true

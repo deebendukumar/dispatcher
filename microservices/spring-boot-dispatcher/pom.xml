@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.dispatcher</groupId>
+    <artifactId>spring-boot-dispatcher</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>spring-boot-dispatcher</name>
+    <url></url>
+    <licenses>
+        <license>
+            <name></name>
+            <url></url>
+            <comments></comments>
+        </license>
+    </licenses>
+    <organization>
+        <name></name>
+        <url></url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Deebendu Kumar</name>
+            <email></email>
+            <organization></organization>
+            <organizationUrl></organizationUrl>
+        </developer>
+        <developer>
+            <name>Raj Kamal</name>
+            <email></email>
+            <organization></organization>
+            <organizationUrl></organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection></connection>
+        <developerConnection></developerConnection>
+        <url></url>
+        <tag></tag>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <resource.delimiter>@</resource.delimiter>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <copyright>1998 - 2023</copyright>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <spring-hateoas.version>2.2.2</spring-hateoas.version> <!-- in line with boot -->
+
+        <openapi.version>1.6.9</openapi.version>
+
+        <!--apache dependencies-->
+        <org.apache.commons.io.version>2.13.0</org.apache.commons.io.version>
+        <org.apache.poi.version>5.2.2</org.apache.poi.version>
+
+        <!--google dependencies-->
+        <com.google.guava.version>31.1-jre</com.google.guava.version>
+
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+    </properties>
+    <modules>
+        <module>spring-boot-dispatcher-service</module>
+        <module>spring-boot-dispatcher-pim</module>
+    </modules>
+    <!--
+    If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
+    for the child pom. It would NOT actually download the jar at this point. The child pom will have to provide the
+    groupId and the artifactId explicitly to download and use the jar to compile its classes. Note: you don't have to
+    include the version of the dependency in the child poms.
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!--
+            Spring Cloud provides tools for developers to quickly build some of the common patterns in distributed
+            systems (e.g. configuration management, service discovery, circuit breakers, intelligent routing,
+            micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions,
+            cluster state). Coordination of distributed systems leads to boiler plate patterns, and using Spring Cloud
+            developers can quickly stand up services and applications that implement those patterns. They will work
+            well in any distributed environment, including the developer’s own laptop, bare metal data centres, and
+            managed platforms such as Cloud Foundry.
+            -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--apache dependencies-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${org.apache.commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${org.apache.poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${org.apache.poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.14</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.hateoas</groupId>
+                <artifactId>spring-hateoas</artifactId>
+                <version>${spring-hateoas.version}</version>
+            </dependency>
+
+            <!--google dependencies-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
+            </dependency>
+
+            <!--testing dependencies -->
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>5.3.1</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--maven-compiler-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <!--To get Javadoc and Source jar files generated, you have to configure the Javadoc and source Maven plugins.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
