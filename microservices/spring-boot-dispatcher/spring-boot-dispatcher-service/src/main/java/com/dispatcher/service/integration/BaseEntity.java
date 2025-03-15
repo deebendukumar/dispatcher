@@ -31,27 +31,27 @@ public class BaseEntity implements TypedEntity<Long>, Serializable {
 
     /** Primary key, assigned by the database or persistence strategy, shouldn't be used nor exposed in public API. */
     @Id
-    @Column(name = "C_PK")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
-    private String pk;
+    private String id;
 
     /** Timestamp when the database record was inserted. */
-    @Column(name = "C_CREATED")
+    @Column(name = "created")
     @CreatedDate
     private LocalDateTime createDt;
 
     /** Username who created the entity. */
-    @Column(name = "C_CREATED_BY")
+    @Column(name = "created_by")
     @CreatedBy
     private String createdBy;
 
     /** Timestamp when the database record was updated the last time. */
-    @Column(name = "C_UPDATED")
+    @Column(name = "updated")
     @LastModifiedDate
     private LocalDateTime lastModifiedDt;
 
     /** Username who modified the entity. */
-    @Column(name = "C_UPDATED_BY")
+    @Column(name = "updated_by")
     @LastModifiedBy
     private String lastModifiedBy;
 
@@ -63,8 +63,8 @@ public class BaseEntity implements TypedEntity<Long>, Serializable {
      *
      * @return The primary key, might be {@literal null} for transient entities.
      */
-    public String getPk() {
-        return pk;
+    public String getId() {
+        return id;
     }
 
     /**
