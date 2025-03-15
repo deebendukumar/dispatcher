@@ -6,9 +6,7 @@ import java.io.Serializable;
 
 public class Category extends ApplicationEntity implements Serializable {
 
-    //Fields
     //name
-    //array of parent_ids
     //body
     //body_html
 }

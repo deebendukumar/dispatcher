@@ -33,7 +33,7 @@ public class BaseEntity implements TypedEntity<Long>, Serializable {
     @Id
     @Column(name = "C_PK")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
-    private Long pk;
+    private String pk;
 
     /** Timestamp when the database record was inserted. */
     @Column(name = "C_CREATED")
@@ -63,7 +63,7 @@ public class BaseEntity implements TypedEntity<Long>, Serializable {
      *
      * @return The primary key, might be {@literal null} for transient entities.
      */
-    public Long getPk() {
+    public String getPk() {
         return pk;
     }
 
