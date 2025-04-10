@@ -15,7 +15,7 @@ import java.util.Map;
 import static com.jayway.jsonpath.JsonPath.read;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Response<T extends Serializable> extends RepresentationModel<Response<T>> implements Serializable {
+public class Result<T extends Serializable> extends RepresentationModel<Result<T>> implements Serializable {
 
     public static final String CLASS = "class";
     /**
@@ -40,17 +40,17 @@ public class Response<T extends Serializable> extends RepresentationModel<Respon
 
     private final Map<String, String> other = new HashMap<>();
 
-    protected Response() {
+    protected Result() {
     }
 
-    private Response(String message, String messageKey, String httpStatus, T[] obj) {
+    private Result(String message, String messageKey, String httpStatus, T[] obj) {
         this.message = message;
         this.messageKey = messageKey;
         this.httpStatus = httpStatus;
         this.obj = obj;
     }
 
-    private Response(Builder<T> builder) {
+    private Result(Builder<T> builder) {
         message = builder.message;
         messageKey = builder.messageKey;
         obj = builder.obj;
@@ -65,14 +65,14 @@ public class Response<T extends Serializable> extends RepresentationModel<Respon
      * @return The instance
      * @throws ParseException In case the given String didn't match
      */
-    public static <T extends Serializable> Response<T> parse(String s) throws ParseException {
+    public static <T extends Serializable> Result<T> parse(String s) throws ParseException {
         if (s.contains("message") &&
                 s.contains("messageKey") &&
                 s.contains("httpStatus") &&
                 s.contains(CLASS)) {
             var d = Configuration.defaultConfiguration().jsonProvider().parse(s);
             String[] obj = read(d, "$.obj");
-            var r = new Response<>(read(d, "$.message"), read(d, "$.messageKey"), read(d, "$.httpStatus"), obj);
+            var r = new Result<>(read(d, "$.message"), read(d, "$.messageKey"), read(d, "$.httpStatus"), obj);
             r.any();
         }
         throw new ParseException(String.format("String does not contain mandatory fields. [%s]", s), -1);
@@ -138,7 +138,7 @@ public class Response<T extends Serializable> extends RepresentationModel<Respon
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
 
-        var response = (Response) o;
+        var response = (Result) o;
 
         if (httpStatus != null ? !httpStatus.equals(response.httpStatus) : response.httpStatus != null) return false;
         if (message != null ? !message.equals(response.message) : response.message != null) return false;
@@ -231,8 +231,8 @@ public class Response<T extends Serializable> extends RepresentationModel<Respon
          *
          * @return a {@code Response} built with parameters of this {@code Response.Builder}
          */
-        public Response<T> build() {
-            return new Response<>(this);
+        public Result<T> build() {
+            return new Result<>(this);
         }
     }
 }

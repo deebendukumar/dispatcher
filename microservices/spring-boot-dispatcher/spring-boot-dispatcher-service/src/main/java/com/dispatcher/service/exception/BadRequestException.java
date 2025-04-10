@@ -4,7 +4,7 @@ import org.ameba.i18n.Translator;
 
 import java.io.Serializable;
 
-public class DataNotFoundException extends DispatcherRuntimeException {
+public class BadRequestException extends DispatcherRuntimeException {
 
     /**
      * Create a new DataNotFoundException with a message text and the root
@@ -13,7 +13,7 @@ public class DataNotFoundException extends DispatcherRuntimeException {
      * @param message Message text as String
      * @param cause The root exception
      */
-    public DataNotFoundException(String message, Throwable cause) {
+    public BadRequestException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -22,7 +22,7 @@ public class DataNotFoundException extends DispatcherRuntimeException {
      *
      * @param message Message text as String
      */
-    public DataNotFoundException(String message) {
+    public BadRequestException(String message) {
         super(message);
     }
 
@@ -31,11 +31,11 @@ public class DataNotFoundException extends DispatcherRuntimeException {
      *
      * @param id Id of the expected entity
      */
-    public DataNotFoundException(Serializable id) {
+    public BadRequestException(Serializable id) {
         super(String.format("Entity class not found in persistence layer, id=[%s]",id));
     }
 
-    public DataNotFoundException(Translator translator, String messageKey, Object... param) {
+    public BadRequestException(Translator translator, String messageKey, Object... param) {
         super(translator.translate(messageKey, param), messageKey);
     }
 

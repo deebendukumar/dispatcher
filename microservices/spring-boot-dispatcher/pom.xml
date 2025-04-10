@@ -59,6 +59,8 @@
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <spring-hateoas.version>2.2.2</spring-hateoas.version> <!-- in line with boot -->
 
+        <ameba-lib.version>4.1.0</ameba-lib.version>
+
         <openapi.version>1.6.9</openapi.version>
 
         <!--apache dependencies-->
@@ -73,8 +75,17 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <modules>
-        <module>spring-boot-dispatcher-service</module>
+        <module>spring-boot-dispatcher-integration</module>
+        <module>spring-boot-dispatcher-inventory</module>
+        <module>spring-boot-dispatcher-partners</module>
+        <module>spring-boot-dispatcher-picking</module>
         <module>spring-boot-dispatcher-pim</module>
+        <module>spring-boot-dispatcher-putaway</module>
+        <module>spring-boot-dispatcher-receiving</module>
+        <module>spring-boot-dispatcher-service</module>
+        <module>spring-boot-dispatcher-shipping</module>
+        <module>spring-boot-dispatcher-transportation</module>
+        <module>spring-boot-dispatcher-uaa</module>
     </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
@@ -136,6 +147,18 @@
             </dependency>
 
             <dependency>
+                <groupId>io.interface21</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.interface21</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+                <type>test-jar</type>
+            </dependency>
+
+            <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-bom</artifactId>
                 <version>${spring-data-bom.version}</version>
@@ -151,6 +174,13 @@
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
                 <version>${jakarta.persistence-api.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.16.1</version>
             </dependency>
 
             <!--google dependencies-->
