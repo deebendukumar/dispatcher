@@ -2,7 +2,6 @@ package com.dispatcher.partners.controller;
 
 import com.dispatcher.partners.data.Partner;
 import com.dispatcher.partners.service.PartnerService;
-import com.dispatcher.service.exception.BadRequestException;
 import com.dispatcher.service.http.AbstractWebController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
