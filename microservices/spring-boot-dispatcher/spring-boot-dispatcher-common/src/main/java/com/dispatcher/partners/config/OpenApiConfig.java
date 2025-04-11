@@ -10,7 +10,7 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("My Project API").version("1.0"));
+                .info(new Info().title("Dispatcher Project API").version("1.0"));
     }
 }
 
