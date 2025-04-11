@@ -75,8 +75,11 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <modules>
+        <module>spring-boot-dispatcher-discovery</module>
+        <module>spring-boot-dispatcher-gateway</module>
         <module>spring-boot-dispatcher-integration</module>
         <module>spring-boot-dispatcher-inventory</module>
+        <module>spring-boot-dispatcher-loadbalancer</module>
         <module>spring-boot-dispatcher-partners</module>
         <module>spring-boot-dispatcher-picking</module>
         <module>spring-boot-dispatcher-pim</module>
@@ -177,12 +180,32 @@
                 <version>${jakarta.persistence-api.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>13.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-admin-client</artifactId>
+                <version>14.0.0</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.16.1</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk15on</artifactId>
+                <version>1.70</version>
+            </dependency>
+
 
             <!--google dependencies-->
             <dependency>
@@ -199,6 +222,12 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>6.1.0</version>
+                <scope>provided</scope>
+            </dependency>
 
             <dependency>
                 <groupId>com.dispatcher.service</groupId>

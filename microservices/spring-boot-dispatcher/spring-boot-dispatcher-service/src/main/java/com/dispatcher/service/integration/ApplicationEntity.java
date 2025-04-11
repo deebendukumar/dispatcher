@@ -21,10 +21,15 @@ import jakarta.persistence.PrePersist;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
 
 @MappedSuperclass
-public class ApplicationEntity extends BaseEntity implements Serializable {
+public class ApplicationEntity extends BaseEntity implements Auditable {
+
+    public Long generateRandomNumber() {
+        return System.currentTimeMillis() + new Random().nextInt();
+    }
 
     //Future use
     //Application related data

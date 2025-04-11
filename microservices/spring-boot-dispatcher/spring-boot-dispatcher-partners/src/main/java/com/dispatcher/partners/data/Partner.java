@@ -1,6 +1,7 @@
 package com.dispatcher.partners.data;
 
 import com.dispatcher.service.integration.ApplicationEntity;
+import com.dispatcher.service.integration.BaseEntity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 
 @Data
 @Document(collection = "partners")
-public class Partner extends ApplicationEntity implements Serializable {
+public class Partner extends BaseEntity {
 
     @Field("name")
     private String name;

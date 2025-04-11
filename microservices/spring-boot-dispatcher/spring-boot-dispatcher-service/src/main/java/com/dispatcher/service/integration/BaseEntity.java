@@ -24,10 +24,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class BaseEntity implements TypedEntity<Long>, Serializable {
+public class BaseEntity implements Auditable {
 
     /** Primary key, assigned by the database or persistence strategy, shouldn't be used nor exposed in public API. */
     @Id
@@ -145,5 +146,9 @@ public class BaseEntity implements TypedEntity<Long>, Serializable {
      */
     protected void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
+    }
+
+    public Long generateRandomNumber() {
+        return System.currentTimeMillis() + new Random().nextInt();
     }
 }
