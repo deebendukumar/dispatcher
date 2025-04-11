@@ -70,6 +70,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Dependency on the common module -->
+        <dependency>
+            <groupId>com.dispatcher</groupId>
+            <artifactId>spring-boot-dispatcher-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
