@@ -1,84 +1,85 @@
 package com.dispatcher.pim.entity;
 
 import com.dispatcher.service.base.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Builder;
+import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+@JsonPropertyOrder({
+        "id"
+})
+@Data
+@Builder
+@Document(collection = "variants")
 public class Variant extends BaseEntity {
 
-    //product_id
-    //title
-    //body
-    //body_html
-    //short_description
-    //barcode - A UPC for the product
-    //product_group
-    //product_type
-    //purchase_qty_uom -receiving unit of measure
-    //purchase_uom_conversion_factor
-    //purchase_pack_qty purchase standard pack quantity
-    //stock_qty_uom inventory unit of measure
-    //stock_uon_conversion_factor
-    //shipping_qty_uom
-    //shipping_uom_conversion_factor
-    //total_qty_on_hand
-    //min_purchase_quantity
-    //min_reorder_quantity
-    //min_on_hand_qty
-    //max_on_hand_qty
-    //min_order_qty
-    //max_order_qty
-    //units_per_case
-    //cases_per_pallet
-    //base_cost
-    //supplier_cost
-    //fulfillment_service
+    @Field(name = "product_id")
+    @JsonProperty(value = "product_id")
+    private String productId;
 
-    //depth
-    //height
-    //width
-    //volume
-    //grams
-    //weight
-    //weight_unit
-    //inventory_item_id
-    //inventory_management
-    //inventory_policy
-    //inventory_quantity
+    @Field(name = "title")
+    @JsonProperty(value = "title")
+    private String title;
 
-    //price
-    //requires_shipping
-    //sku
-    //tags
-    //batch_no_flag this flag indicates if the product required lot tracking
-    //bin_loc_flag  this flag indicates if the product is stored in bin location
-    //fifo
-    //active
+    @Field(name = "body")
+    @JsonProperty(value = "body")
+    private String body;
 
-    //standard_cost
-    //standard_currency
-    //vat_code
-    //gst_code
-    //ean
+    @Field(name = "body_html")
+    @JsonProperty(value = "body_html")
+    private String bodyHtml;
 
-    //fragile
-    //hazmat - Whether a hazardous material or not
-    //hazmat_id
-    //max_stack maximum stack size
-    //obsolete_product disable further receiving of the product
+    @Field(name = "short_description")
+    @JsonProperty(value = "short_description")
+    private String shortDescription;
 
-    //packed_depth
-    //packed_height
-    //packed_volume
-    //packed_weight
-    //packed_width
+    @Field(name = "sku")
+    @JsonProperty(value = "sku")
+    private String sku;
 
-    //user_def_1
-    //user_def_2
-    //user_def_3
-    //user_def_4
-    //user_def_5
-    //user_def_6
-    //user_def_7
-    //user_def_8
+    @Field(name = "barcode")
+    @JsonProperty(value = "barcode")
+    private String barcode;
 
+    @Field(name = "serial_no")
+    @JsonProperty(value = "serial_no")
+    private String serialNo;
 
+    @Field(name = "active")
+    @JsonProperty(value = "active")
+    private Boolean active;
+
+    @Field(name = "fragile")
+    @JsonProperty(value = "fragile")
+    private Boolean fragile;
+
+    @JsonProperty(value = "hazmat")
+    private Hazmat hazmat; //Whether a hazardous material or not
+
+    @JsonProperty(value = "bin")
+    private Bin bin;
+
+    @Field(name = "unit")
+    @JsonProperty(value = "unit")
+    private String unit;
+
+    @Field(name = "units_per_case")
+    @JsonProperty(value = "units_per_case")
+    private String unitsPerCase;
+
+    @Field(name = "cases_per_pallet")
+    @JsonProperty(value = "cases_per_pallet")
+    private String casesPerPallet;
+
+    @Field(name = "user_def_1")
+    @JsonProperty(value = "user_def_1")
+    private String userDef1;
+
+    public static Variant valueOf() {
+        return builder()
+                .build();
+    }
 }

@@ -16,22 +16,22 @@ import org.springframework.data.mongodb.core.mapping.Field;
 })
 @Data
 @Builder
-@Document(collection = "brands")
-public class Brand extends BaseEntity {
+@Document(collection = "hazmats")
+public class Hazmat extends BaseEntity {
 
     @Field(name = "name")
     @JsonProperty(value = "name")
     private String name;
 
-    @Field(name = "body")
-    @JsonProperty(value = "body")
-    private String body;
+    @Field(name = "description")
+    @JsonProperty(value = "description")
+    private String description;
 
     @Field(name = "body_html")
     @JsonProperty(value = "body_html")
     private String bodyHtml;
 
-    public static Brand valueOf() {
+    public static Hazmat valueOf() {
         return builder()
                 .build();
     }
