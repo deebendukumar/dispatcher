@@ -28,26 +28,38 @@ public class BinServiceImpl implements BinService<Bin> {
 
     @Override
     public Bin findByPKey(String id) {
-        return null;
+
+        return repository.findById(id).orElse(null);
+
     }
 
     @Override
     public List<Bin> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Bin create(Bin bin) {
-        return null;
+        return repository.save(bin);
     }
 
     @Override
     public Bin update(String id, Bin bin) {
+        Bin existingBin = findByPKey(id);
+        if (existingBin != null) {
+            bin.setId(id);
+            return repository.save(bin);
+        }
         return null;
     }
 
     @Override
     public Bin delete(String id) {
+        Bin existingBin = findByPKey(id);
+        if (existingBin != null) {
+            repository.delete(existingBin);
+            return existingBin;
+        }
         return null;
     }
 }

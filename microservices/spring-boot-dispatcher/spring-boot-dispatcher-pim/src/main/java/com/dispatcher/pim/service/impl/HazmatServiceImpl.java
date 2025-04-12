@@ -28,26 +28,37 @@ public class HazmatServiceImpl implements HazmatService<Hazmat> {
 
     @Override
     public Hazmat findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("hazmat.not.found", id)));
     }
 
     @Override
     public List<Hazmat> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Hazmat create(Hazmat hazmat) {
-        return null;
+        return repository.save(hazmat);
     }
 
     @Override
     public Hazmat update(String id, Hazmat hazmat) {
-        return null;
+        return repository.findById(id)
+                .map(existingHazmat -> {
+                    hazmat.setId(id);
+                    return repository.save(hazmat);
+                })
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("hazmat.not.found", id)));
     }
 
     @Override
     public Hazmat delete(String id) {
-        return null;
+            return repository.findById(id)
+                    .map(existingHazmat -> {
+                        repository.delete(existingHazmat);
+                        return existingHazmat;
+                    })
+                    .orElseThrow(() -> new IllegalArgumentException(translator.translate("hazmat.not.found", id)));
     }
 }

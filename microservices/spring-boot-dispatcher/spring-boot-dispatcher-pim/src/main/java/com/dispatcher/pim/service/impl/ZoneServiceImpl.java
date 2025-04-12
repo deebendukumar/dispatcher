@@ -10,6 +10,7 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -28,26 +29,38 @@ public class ZoneServiceImpl implements ZoneService<Zone> {
 
     @Override
     public Zone findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("zone.not.found", id)));
     }
 
     @Override
     public List<Zone> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Zone create(Zone zone) {
-        return null;
+        return repository.save(zone);
     }
 
     @Override
     public Zone update(String id, Zone zone) {
-        return null;
+        return repository.findById(id)
+                .map(existingZone -> {
+                    zone.setId(id);
+                    return repository.save(zone);
+                })
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("zone.not.found", id)));
     }
 
     @Override
     public Zone delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(zone -> {
+                    repository.delete(zone);
+                    return zone;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Zone with id " + id + " not found"));
     }
+
 }

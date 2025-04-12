@@ -10,6 +10,7 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -28,26 +29,39 @@ public class CategoryServiceImpl implements CategoryService<Category> {
 
     @Override
     public Category findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("category.not.found", id)));
     }
 
     @Override
     public List<Category> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Category create(Category category) {
-        return null;
+        return repository.save(category);
     }
 
     @Override
     public Category update(String id, Category category) {
-        return null;
+
+        return repository.findById(id)
+                .map(existingCategory -> {
+                    category.setId(id);
+                    return repository.save(category);
+                })
+                .orElseThrow(() -> new NoSuchElementException("Category with id " + id + " not found"));
     }
 
     @Override
     public Category delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(category -> {
+                    repository.delete(category);
+                    return category;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Category with id " + id + " not found"));
     }
+
 }

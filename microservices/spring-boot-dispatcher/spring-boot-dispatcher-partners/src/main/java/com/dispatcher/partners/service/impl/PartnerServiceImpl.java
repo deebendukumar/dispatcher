@@ -10,6 +10,8 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -37,19 +39,19 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public List<Partner> findByPhone(String phone) {
-        return null;
+        return repository.findByPhone(phone);
     }
 
     @Override
     @Measured
     public List<Partner> findByName(String name) {
-        return null;
+        return repository.findByName(name);
     }
 
     @Override
     @Measured
     public List<Partner> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
@@ -61,12 +63,26 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public Partner update(String id, Partner partner) {
-        return null;
+        return repository.findById(id)
+                .map(existingPartner -> {
+                    partner.setId(id);
+                    return repository.save(partner);
+                })
+                .orElseThrow(() -> new DataNotFoundException(translator,
+                        MessageCodes.TO_WITH_PK_NOT_FOUND,
+                        new String[]{id}, id));
     }
 
     @Override
     @Measured
     public Partner delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(partner -> {
+                    repository.delete(partner);
+                    return partner;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Partner with id " + id + " not found"));
     }
+
+
 }

@@ -10,6 +10,7 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -28,26 +29,39 @@ public class ProductServiceImpl implements ProductService<Product> {
 
     @Override
     public Product findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("product.not.found", id)));
     }
 
     @Override
     public List<Product> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Product create(Product product) {
-        return null;
+
+        return repository.save(product);
+
     }
 
     @Override
     public Product update(String id, Product product) {
-        return null;
+        return repository .findById(id)
+                .map(existingProduct -> {
+                    product.setId(id);
+                    return repository.save(product);
+                })
+                .orElseThrow(() -> new NoSuchElementException("Product with id " + id + " not found"));
     }
 
     @Override
     public Product delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(product -> {
+                    repository.delete(product);
+                    return product;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Product with id " + id + " not found"));
     }
 }

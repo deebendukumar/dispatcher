@@ -7,6 +7,7 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -25,26 +26,38 @@ public class WarehouseServiceImpl implements WarehouseService<Warehouse> {
 
     @Override
     public Warehouse findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("warehouse.not.found", id)));
     }
 
     @Override
     public List<Warehouse> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Warehouse create(Warehouse warehouse) {
-        return null;
+        return repository.save(warehouse);
     }
 
     @Override
     public Warehouse update(String id, Warehouse warehouse) {
-        return null;
+        return repository.findById(id)
+                .map(existingWarehouse -> {
+                    warehouse.setId(id);
+                    return repository.save(warehouse);
+                })
+                .orElseThrow(() -> new NoSuchElementException("Warehouse with id " + id + " not found"));
     }
 
     @Override
     public Warehouse delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(warehouse -> {
+                    repository.delete(warehouse);
+                    return warehouse;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Warehouse with id " + id + " not found"));
     }
+
 }

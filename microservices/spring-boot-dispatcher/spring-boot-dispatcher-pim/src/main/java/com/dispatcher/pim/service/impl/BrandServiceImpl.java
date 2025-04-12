@@ -28,26 +28,36 @@ public class BrandServiceImpl implements BrandService<Brand> {
 
     @Override
     public Brand findByPKey(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public List<Brand> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Brand create(Brand brand) {
-        return null;
+        return repository.save(brand);
     }
 
     @Override
     public Brand update(String id, Brand brand) {
-        return null;
+        return repository.findById(id)
+                .map(existingBrand -> {
+                    brand.setId(id);
+                    return repository.save(brand);
+                })
+                .orElse(null);
     }
 
     @Override
     public Brand delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(existingBrand -> {
+                    repository.delete(existingBrand);
+                    return existingBrand;
+                })
+                .orElse(null);
     }
 }

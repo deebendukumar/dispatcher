@@ -10,6 +10,7 @@ import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -28,26 +29,38 @@ public class VariantServiceImpl implements VariantService<Variant> {
 
     @Override
     public Variant findByPKey(String id) {
-        return null;
+        return repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("variant.not.found", id)));
     }
 
     @Override
     public List<Variant> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public Variant create(Variant variant) {
-        return null;
+        return repository.save(variant);
     }
 
     @Override
     public Variant update(String id, Variant variant) {
-        return null;
+        return repository.findById(id)
+                .map(existingVariant -> {
+                    variant.setId(id);
+                    return repository.save(variant);
+                })
+                .orElseThrow(() -> new IllegalArgumentException(translator.translate("variant.not.found", id)));
     }
 
     @Override
     public Variant delete(String id) {
-        return null;
+        return repository.findById(id)
+                .map(variant -> {
+                    repository.delete(variant);
+                    return variant;
+                })
+                .orElseThrow(() -> new NoSuchElementException("Variant with id " + id + " not found"));
     }
+
 }
