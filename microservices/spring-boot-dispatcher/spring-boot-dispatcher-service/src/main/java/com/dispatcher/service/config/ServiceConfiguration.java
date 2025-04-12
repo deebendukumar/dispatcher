@@ -1,4 +1,4 @@
-package com.dispatcher.partners.config;
+package com.dispatcher.service.config;
 
 import org.ameba.i18n.AbstractSpringTranslator;
 import org.ameba.i18n.Translator;
@@ -10,11 +10,12 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-public class ApplicationConfig01 {
+@ComponentScan(basePackages = {"com.dispatcher.service"})
+public class ServiceConfiguration {
 
     private final Environment environment;
 
-    ApplicationConfig01(Environment environment) {
+    ServiceConfiguration(Environment environment) {
         this.environment = environment;
     }
 

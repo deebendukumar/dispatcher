@@ -1,16 +1,13 @@
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.partners.data.Partner;
+import com.dispatcher.partners.entity.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
-import com.dispatcher.service.http.Result;
-import lombok.RequiredArgsConstructor;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -58,7 +55,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public Partner create(Partner partner) {
-        return null;
+        return repository.save(partner);
     }
 
     @Override

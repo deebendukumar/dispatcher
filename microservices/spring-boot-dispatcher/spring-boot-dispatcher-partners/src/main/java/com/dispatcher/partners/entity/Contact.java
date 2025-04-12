@@ -1,12 +1,12 @@
-package com.dispatcher.partners.data;
+package com.dispatcher.partners.entity;
 
-import com.dispatcher.service.integration.BaseEntity;
+import com.dispatcher.service.base.entity.Auditable;
+import com.dispatcher.service.base.entity.BaseEntity;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-public class Contact extends BaseEntity {
+public class Contact implements Auditable {
 
     @Field("phone")
     private String phone;

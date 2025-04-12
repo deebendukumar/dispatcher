@@ -1,4 +1,4 @@
-package com.dispatcher.service.http;
+package com.dispatcher.service.base.http;
 
 import com.dispatcher.service.logging.LoggingCategories;
 import org.slf4j.Logger;

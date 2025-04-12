@@ -31,9 +31,9 @@ services:
     volumes:
       - /data/mongodb:/data/db
     environment:
-      MONGO_INITDB_DATABASE: pim
-      MONGO_INITDB_ROOT_USERNAME: pim
-      MONGO_INITDB_ROOT_PASSWORD: PimRW
+      MONGO_INITDB_DATABASE: wms
+      MONGO_INITDB_ROOT_USERNAME: wms
+      MONGO_INITDB_ROOT_PASSWORD: WmsRW
     networks:
       - portainer
 

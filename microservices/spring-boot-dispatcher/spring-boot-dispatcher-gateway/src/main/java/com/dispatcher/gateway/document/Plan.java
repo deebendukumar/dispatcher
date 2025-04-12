@@ -1,11 +1,10 @@
 package com.dispatcher.gateway.document;
 
-import com.dispatcher.service.integration.BaseEntity;
+import com.dispatcher.service.base.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data

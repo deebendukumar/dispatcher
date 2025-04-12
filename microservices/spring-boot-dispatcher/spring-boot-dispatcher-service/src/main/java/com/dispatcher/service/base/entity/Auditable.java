@@ -1,4 +1,4 @@
-package com.dispatcher.service.integration;
+package com.dispatcher.service.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;

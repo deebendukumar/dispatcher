@@ -1,6 +1,6 @@
 package com.dispatcher.partners.service;
 
-import com.dispatcher.partners.data.Partner;
+import com.dispatcher.partners.entity.Partner;
 
 import java.util.List;
 

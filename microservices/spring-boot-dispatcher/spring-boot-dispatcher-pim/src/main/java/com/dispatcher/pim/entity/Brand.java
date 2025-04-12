@@ -1,6 +1,6 @@
 package com.dispatcher.pim.entity;
 
-import com.dispatcher.service.integration.BaseEntity;
+import com.dispatcher.service.base.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

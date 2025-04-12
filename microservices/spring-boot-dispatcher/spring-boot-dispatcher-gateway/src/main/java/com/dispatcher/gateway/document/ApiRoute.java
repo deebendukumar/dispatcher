@@ -3,7 +3,7 @@ package com.dispatcher.gateway.document;
 import com.dispatcher.gateway.model.Endpoint;
 import com.dispatcher.gateway.model.Filter;
 import com.dispatcher.gateway.model.Predicate;
-import com.dispatcher.service.integration.BaseEntity;
+import com.dispatcher.service.base.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

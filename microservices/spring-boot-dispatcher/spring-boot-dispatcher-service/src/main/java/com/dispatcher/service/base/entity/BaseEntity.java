@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.dispatcher.service.integration;
+package com.dispatcher.service.base.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.*;

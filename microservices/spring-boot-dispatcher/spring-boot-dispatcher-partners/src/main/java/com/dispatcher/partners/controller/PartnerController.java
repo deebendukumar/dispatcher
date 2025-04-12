@@ -1,8 +1,10 @@
 package com.dispatcher.partners.controller;
 
-import com.dispatcher.partners.data.Partner;
+import com.dispatcher.partners.entity.Partner;
 import com.dispatcher.partners.service.PartnerService;
-import com.dispatcher.service.http.AbstractWebController;
+import com.dispatcher.service.base.http.AbstractWebController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/partners")
+@Tag(name = "Partners", description = "API for managing business partners")
 public class PartnerController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(PartnerController.class);
@@ -25,6 +28,7 @@ public class PartnerController extends AbstractWebController {
     }
 
     @PostMapping(path = "")
+    @Operation(summary = "Create a new partner")
     public Partner create(@RequestBody Partner partner,
                           HttpServletRequest request,
                           HttpServletResponse response) {
@@ -32,6 +36,7 @@ public class PartnerController extends AbstractWebController {
     }
 
     @GetMapping(path = "/{id}")
+    @Operation(summary = "Get partner by ID")
     public Partner find(@PathVariable String id,
                         HttpServletRequest request,
                         HttpServletResponse response) {
@@ -39,6 +44,7 @@ public class PartnerController extends AbstractWebController {
     }
 
     @GetMapping(path = "")
+    @Operation(summary = "Get all partners or filter them by phone number or name")
     public List<Partner> findBy(@RequestParam("phone") Optional<String> phone,
                                 @RequestParam("name") Optional<String> name,
                                 HttpServletRequest request,
@@ -52,6 +58,7 @@ public class PartnerController extends AbstractWebController {
     }
 
     @PutMapping(path = "/{id}")
+    @Operation(summary = "Update a partner")
     public Partner update(@PathVariable String id,
                           @RequestBody Partner partner,
                           HttpServletRequest request,
@@ -60,6 +67,7 @@ public class PartnerController extends AbstractWebController {
     }
 
     @DeleteMapping(path = "/{id}")
+    @Operation(summary = "Deactivate a partner")
     public Partner delete(@PathVariable String id,
                           HttpServletRequest request,
                           HttpServletResponse response) {
