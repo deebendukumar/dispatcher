@@ -27,6 +27,10 @@ public class Warehouse extends BaseEntity {
     @JsonProperty(value = "location")
     private String location;
 
+    @Field(name = "active")
+    @JsonProperty(value = "active")
+    private Boolean active;
+
     public static Warehouse valueOf() {
         return builder()
                 .build();

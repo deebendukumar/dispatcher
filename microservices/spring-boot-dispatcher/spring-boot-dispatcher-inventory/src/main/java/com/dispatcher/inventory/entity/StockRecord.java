@@ -13,12 +13,20 @@ import org.springframework.data.mongodb.core.mapping.Field;
 })
 @Data
 @Builder
-@Document(collection = "variants")
-public class Inventory extends BaseEntity {
+@Document(collection = "stock_record")
+public class StockRecord extends BaseEntity {
 
-    @Field(name = "product_id")
-    @JsonProperty(value = "product_id")
-    private String productId;
+    @Field(name = "variant_id")
+    @JsonProperty(value = "variant_id")
+    private String variantId;
+
+    @Field(name = "activity_code")
+    @JsonProperty(value = "activity_code")
+    private String activityCode;
+
+//    @Field(name = "activity_code")
+//    @JsonProperty(value = "activity_code")
+//    private String activityCode;
 
     //barcode - A UPC for the product
     //product_group

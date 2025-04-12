@@ -31,6 +31,10 @@ public class Brand extends BaseEntity {
     @JsonProperty(value = "body_html")
     private String bodyHtml;
 
+    @Field(name = "active")
+    @JsonProperty(value = "active")
+    private Boolean active;
+
     public static Brand valueOf() {
         return builder()
                 .build();

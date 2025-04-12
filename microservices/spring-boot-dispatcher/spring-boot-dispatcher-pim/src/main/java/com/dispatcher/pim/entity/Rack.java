@@ -31,6 +31,10 @@ public class Rack extends BaseEntity {
     @JsonProperty(value = "name")
     private String name;
 
+    @Field(name = "active")
+    @JsonProperty(value = "active")
+    private Boolean active;
+
     public static Rack valueOf() {
         return builder()
                 .build();

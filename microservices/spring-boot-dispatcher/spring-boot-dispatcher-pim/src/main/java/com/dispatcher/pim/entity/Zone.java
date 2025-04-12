@@ -27,6 +27,10 @@ public class Zone extends BaseEntity {
     @JsonProperty(value = "name")
     private String name;
 
+    @Field(name = "active")
+    @JsonProperty(value = "active")
+    private Boolean active;
+
     public static Zone valueOf() {
         return builder()
                 .build();
