@@ -15,8 +15,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "plan")
 public class Plan extends BaseEntity {
 
-    @Id
-    private Long id;
     private String name;
     private Integer limit;
 }

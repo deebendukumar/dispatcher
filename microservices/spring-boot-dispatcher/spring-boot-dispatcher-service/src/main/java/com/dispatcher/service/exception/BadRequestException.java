@@ -11,7 +11,7 @@ public class BadRequestException extends DispatcherRuntimeException {
      * exception.
      *
      * @param message Message text as String
-     * @param cause The root exception
+     * @param cause   The root exception
      */
     public BadRequestException(String message, Throwable cause) {
         super(message, cause);
@@ -32,11 +32,10 @@ public class BadRequestException extends DispatcherRuntimeException {
      * @param id Id of the expected entity
      */
     public BadRequestException(Serializable id) {
-        super(String.format("Entity class not found in persistence layer, id=[%s]",id));
+        super(String.format("Entity class not found in persistence layer, id=[%s]", id));
     }
 
     public BadRequestException(Translator translator, String messageKey, Object... param) {
         super(translator.translate(messageKey, param), messageKey);
     }
-
 }

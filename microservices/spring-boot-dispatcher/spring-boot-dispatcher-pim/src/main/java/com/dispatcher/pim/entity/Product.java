@@ -1,9 +1,6 @@
 package com.dispatcher.pim.entity;
 
-import com.dispatcher.service.integration.ApplicationEntity;
 import com.dispatcher.service.integration.BaseEntity;
-
-import java.io.Serializable;
 
 public class Product extends BaseEntity {
 

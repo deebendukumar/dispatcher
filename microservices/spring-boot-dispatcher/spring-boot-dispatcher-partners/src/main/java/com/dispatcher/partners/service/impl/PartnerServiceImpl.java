@@ -1,9 +1,9 @@
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.partners.config.MessageCodes;
 import com.dispatcher.partners.data.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
+import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
 import com.dispatcher.service.http.Result;
 import lombok.RequiredArgsConstructor;

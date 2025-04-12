@@ -40,13 +40,11 @@ public class ApiRouteLocatorImpl implements RouteLocator {
     @Override
     public Flux<Route> getRoutes() {
         RouteLocatorBuilder.Builder builder = routeLocatorBuilder.routes();
-        Flux<Route> routes = service.findAll().stream()
-                .map(apiRoute -> builder.route(
-                        String.valueOf(apiRoute.getId()),
-                        predicateSpec -> setPredicateSpec(apiRoute, predicateSpec)
-                ))
-                .collectList()
-                .flatMapMany(builders -> builder.build().getRoutes());
+        List<ApiRoute> list = service.findAll();
+        Flux<Route> routes = null;
+//        Flux<Route> routes = service.findAll().stream()
+//                .map(apiRoute -> builder.route(String.valueOf(apiRoute.getId()), predicateSpec -> setPredicateSpec(apiRoute, predicateSpec)))
+//                .(b -> b.build().getRoutes());
 
         //adding default routes
         applicationProperties.getRoutes().forEach(new Consumer<ApiRoute>() {

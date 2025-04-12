@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 public class Contact extends BaseEntity {
 
-    @Id
+    @Field("phone")
     private String phone;
     @Field("name")
     private String email;

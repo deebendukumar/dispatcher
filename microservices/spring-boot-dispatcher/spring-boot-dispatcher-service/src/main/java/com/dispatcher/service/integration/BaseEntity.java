@@ -15,44 +15,32 @@
  */
 package com.dispatcher.service.integration;
 
-import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.Data;
+import org.springframework.data.annotation.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@Data
 public class BaseEntity implements Auditable {
 
     /** Primary key, assigned by the database or persistence strategy, shouldn't be used nor exposed in public API. */
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
     private String id;
 
     /** Timestamp when the database record was inserted. */
-    @Column(name = "created")
     @CreatedDate
     private LocalDateTime createDt;
 
     /** Username who created the entity. */
-    @Column(name = "created_by")
     @CreatedBy
     private String createdBy;
 
     /** Timestamp when the database record was updated the last time. */
-    @Column(name = "updated")
     @LastModifiedDate
     private LocalDateTime lastModifiedDt;
 
     /** Username who modified the entity. */
-    @Column(name = "updated_by")
     @LastModifiedBy
     private String lastModifiedBy;
 

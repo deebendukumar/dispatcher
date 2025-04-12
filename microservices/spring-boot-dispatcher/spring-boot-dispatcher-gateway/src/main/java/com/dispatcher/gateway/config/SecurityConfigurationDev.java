@@ -44,16 +44,16 @@ public class SecurityConfigurationDev {
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter());
         httpSecurity.csrf((csrf) -> csrf.disable());
-        httpSecurity.cors().disable();
-        httpSecurity.authorizeRequests()
-                .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                //.antMatchers(HttpMethod.GET, "/apim/api/v1.0/routes").hasRole(environment.getProperty("spring.security.allowed.roles"))
-                .anyRequest()
-                .authenticated();
-        httpSecurity
-                .oauth2ResourceServer()
-                .jwt()
-                .jwtAuthenticationConverter(jwtAuthenticationConverter);
+//        httpSecurity.cors().disable();
+//        httpSecurity.authorizeRequests()
+//                .antMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+//                //.antMatchers(HttpMethod.GET, "/apim/api/v1.0/routes").hasRole(environment.getProperty("spring.security.allowed.roles"))
+//                .anyRequest()
+//                .authenticated();
+//        httpSecurity
+//                .oauth2ResourceServer()
+//                .jwt()
+//                .jwtAuthenticationConverter(jwtAuthenticationConverter);
         return httpSecurity.build();
     }
 }

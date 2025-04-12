@@ -31,7 +31,7 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     public Plan create(Plan plan) {
-        plan.setId(plan.generateRandomNumber());
+        plan.setId(String.valueOf(plan.generateRandomNumber()));
         if (repository.existsByName(plan.getName()))
             throw new DuplicateKeyException("name already exist");
         return repository.save(plan);

@@ -14,6 +14,7 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>spring-boot-dispatcher</name>
+    <description></description>
     <url></url>
     <licenses>
         <license>
@@ -89,7 +90,6 @@
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>
         <module>spring-boot-dispatcher-uaa</module>
-        <module>spring-boot-dispatcher-common</module>
     </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
@@ -116,6 +116,7 @@
                 <scope>import</scope>
             </dependency>
 
+
             <!--apache dependencies-->
             <dependency>
                 <groupId>commons-io</groupId>
@@ -138,30 +139,7 @@
                 <version>4.5.14</version>
             </dependency>
 
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct</artifactId>
-                <version>${org.mapstruct.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.interface21</groupId>
-                <artifactId>ameba-lib</artifactId>
-                <version>${ameba-lib.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.interface21</groupId>
-                <artifactId>ameba-lib</artifactId>
-                <version>${ameba-lib.version}</version>
-                <type>test-jar</type>
-            </dependency>
-
+            <!--spring framework related-->
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-bom</artifactId>
@@ -174,12 +152,8 @@
                 <artifactId>spring-hateoas</artifactId>
                 <version>${spring-hateoas.version}</version>
             </dependency>
-            <dependency>
-                <groupId>jakarta.persistence</groupId>
-                <artifactId>jakarta.persistence-api</artifactId>
-                <version>${jakarta.persistence-api.version}</version>
-            </dependency>
 
+            <!--keycloak related dependencies-->
             <dependency>
                 <groupId>org.keycloak.bom</groupId>
                 <artifactId>keycloak-adapter-bom</artifactId>
@@ -193,25 +167,44 @@
                 <version>14.0.0</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>2.16.1</version>
-            </dependency>
 
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>${jakarta.persistence-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.interface21</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcpkix-jdk15on</artifactId>
                 <version>1.70</version>
             </dependency>
-
-
             <!--google dependencies-->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${com.google.guava.version}</version>
+            </dependency>
+
+            <!-- project related -->
+            <dependency>
+                <groupId>com.dispatcher.service</groupId>
+                <artifactId>spring-boot-dispatcher-service</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!--testing dependencies -->
@@ -221,24 +214,18 @@
                 <version>5.3.1</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
-                <groupId>jakarta.servlet</groupId>
-                <artifactId>jakarta.servlet-api</artifactId>
-                <version>6.1.0</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.dispatcher.service</groupId>
-                <artifactId>spring-boot-dispatcher-service</artifactId>
-                <version>${project.version}</version>
+                <groupId>io.interface21</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+                <type>test-jar</type>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <!--spring framework related dependencies-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -249,37 +236,31 @@
             <scope>provided</scope>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.14.0</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!--external-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
+        <!--testing related-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <!-- Springdoc OpenAPI UI dependency -->
         <dependency>
             <groupId>org.springdoc</groupId>
