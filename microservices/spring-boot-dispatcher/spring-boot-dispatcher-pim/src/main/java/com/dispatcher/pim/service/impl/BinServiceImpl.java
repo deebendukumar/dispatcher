@@ -28,9 +28,7 @@ public class BinServiceImpl implements BinService<Bin> {
 
     @Override
     public Bin findByPKey(String id) {
-
         return repository.findById(id).orElse(null);
-
     }
 
     @Override

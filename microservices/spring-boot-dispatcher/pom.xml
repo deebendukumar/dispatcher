@@ -76,6 +76,7 @@
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <modules>
+        <module>spring-boot-dispatcher-app</module>
         <module>spring-boot-dispatcher-discovery</module>
         <module>spring-boot-dispatcher-gateway</module>
         <module>spring-boot-dispatcher-integration</module>
@@ -85,7 +86,7 @@
         <module>spring-boot-dispatcher-picking</module>
         <module>spring-boot-dispatcher-pim</module>
         <module>spring-boot-dispatcher-putaway</module>
-        <module>spring-boot-dispatcher-receiving</module>
+        <module>spring-boot-dispatcher-preadvice</module>
         <module>spring-boot-dispatcher-service</module>
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>

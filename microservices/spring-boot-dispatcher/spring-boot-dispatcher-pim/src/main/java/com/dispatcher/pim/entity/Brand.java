@@ -23,6 +23,10 @@ public class Brand extends BaseEntity {
     @JsonProperty(value = "name")
     private String name;
 
+    @Field(name = "code")
+    @JsonProperty(value = "code")
+    private String code;
+
     @Field(name = "body")
     @JsonProperty(value = "body")
     private String body;

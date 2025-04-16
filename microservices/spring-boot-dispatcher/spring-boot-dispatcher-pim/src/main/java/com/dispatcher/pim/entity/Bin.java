@@ -42,6 +42,10 @@ public class Bin extends BaseEntity {
     @JsonProperty(value = "active")
     private Boolean active;
 
+    @Field(name = "client_id")
+    @JsonProperty(value = "client_id")
+    private String clientId;
+
     public static Bin valueOf() {
         return builder()
                 .build();

@@ -230,6 +230,42 @@ services:
     networks:
       - portainer
 
+  postgres:
+    container_name: postgres
+    image: postgres:14.1-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - /data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: PostgresRW
+    networks:
+      - portainer
+
+  odoo:
+    container_name: odoo
+    image: odoo:18.0
+    restart: always
+    environment:
+      HOST: postgres
+      USER: postgres
+      PASSWORD: PostgresRW
+    depends_on:
+      - postgres
+    ports:
+      - 8069:8069
+    volumes:
+      - /data/odoo/config:/etc/odoo
+      - /data/odoo/extra-addons:/mnt/extra-addons
+      - /data/odoo/data:/var/lib/odoo
+    links:
+      - postgres
+    networks:
+      - portainer
+
 networks:
   portainer:
     name: portainer

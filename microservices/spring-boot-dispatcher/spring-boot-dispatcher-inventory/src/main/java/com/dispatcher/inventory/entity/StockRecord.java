@@ -8,6 +8,8 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.math.BigDecimal;
+
 @JsonPropertyOrder({
         "id"
 })
@@ -24,74 +26,49 @@ public class StockRecord extends BaseEntity {
     @JsonProperty(value = "activity_code")
     private String activityCode;
 
-//    @Field(name = "activity_code")
-//    @JsonProperty(value = "activity_code")
-//    private String activityCode;
+    @Field(name = "warehouse_id")
+    @JsonProperty(value = "warehouse_id")
+    private String warehouseId;
 
-    //barcode - A UPC for the product
-    //product_group
-    //product_type
-    //purchase_qty_uom -receiving unit of measure
-    //purchase_uom_conversion_factor
-    //purchase_pack_qty purchase standard pack quantity
-    //stock_qty_uom inventory unit of measure
-    //stock_uon_conversion_factor
-    //shipping_qty_uom
-    //shipping_uom_conversion_factor
-    //total_qty_on_hand
-    //min_purchase_quantity
-    //min_reorder_quantity
-    //min_on_hand_qty
-    //max_on_hand_qty
-    //min_order_qty
-    //max_order_qty
-    //units_per_case
-    //cases_per_pallet
-    //base_cost
-    //supplier_cost
-    //fulfillment_service
+    @Field(name = "zone_id")
+    @JsonProperty(value = "zone_id")
+    private String zoneId;
 
-    //dimensions
-    //packed_dimensions
+    @Field(name = "rack_id")
+    @JsonProperty(value = "rack_id")
+    private String rackId;
 
-    //inventory_item_id
-    //inventory_management
-    //inventory_policy
-    //inventory_quantity
+    @Field(name = "bin_id")
+    @JsonProperty(value = "bin_id")
+    private String binId;
 
-    //price
-    //requires_shipping
-    //sku
-    //tags
-    //batch_no_flag this flag indicates if the product required lot tracking
-    //bin_loc_flag  this flag indicates if the product is stored in bin location
-    //fifo
-    //active
+    @Field(name = "batch_number")
+    @JsonProperty(value = "batch_number")
+    private String batchNumber;
 
-    //standard_cost
-    //standard_currency
-    //vat_code
-    //gst_code
-    //ean
+    @Field(name = "serial_number")
+    @JsonProperty(value = "serial_number")
+    private String serialNumber;
 
-    //fragile
-    //hazmat - Whether a hazardous material or not
-    //hazmat_id
-    //max_stack maximum stack size
-    //obsolete_product disable further receiving of the product
+    @Field(name = "date_manufactured")
+    @JsonProperty(value = "date_manufactured")
+    private String dateManufactured;
 
-    //packed_depth
-    //packed_height
-    //packed_volume
-    //packed_weight
-    //packed_width
+    @Field(name = "date_expiry")
+    @JsonProperty(value = "date_expiry")
+    private String dateExpiry;
 
-    //user_def_1
-    //user_def_2
-    //user_def_3
-    //user_def_4
-    //user_def_5
-    //user_def_6
-    //user_def_7
-    //user_def_8
+    @Field(name = "best_before")
+    @JsonProperty(value = "best_before")
+    private String bestBefore;
+
+    @Field(name = "expected_quantity")
+    @JsonProperty(value = "expected_quantity")
+    private BigDecimal expected_quantity;
+
+    public static StockRecord valueOf() {
+        return builder()
+                .build();
+    }
+
 }

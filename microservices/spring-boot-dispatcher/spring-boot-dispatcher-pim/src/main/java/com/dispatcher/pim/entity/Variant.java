@@ -74,6 +74,10 @@ public class Variant extends BaseEntity {
     @JsonProperty(value = "cases_per_pallet")
     private String casesPerPallet;
 
+    @Field(name = "min_order_size")
+    @JsonProperty(value = "min_order_size")
+    private String minOrderSize;
+
     @Field(name = "user_def_1")
     @JsonProperty(value = "user_def_1")
     private String userDef1;

@@ -14,17 +14,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @Builder
 @Document(collection = "product_attribute_type")
-public class ProductAttribute {
+public class ProductAttributeValue {
 
-    @Field(name = "product_id")
-    @JsonProperty(value = "product_id")
-    private String productId;
+    @Field(name = "product_attribute_id")
+    @JsonProperty(value = "product_attribute_id")
+    private String productAttributeId;
 
-    @Field(name = "attribute_id")
-    @JsonProperty(value = "attribute_id")
-    private String attributeId;
+    @Field(name = "value")
+    @JsonProperty(value = "value")
+    private String value;
 
-    public static ProductAttribute valueOf() {
+    public static ProductAttributeValue valueOf() {
         return builder()
                 .build();
     }

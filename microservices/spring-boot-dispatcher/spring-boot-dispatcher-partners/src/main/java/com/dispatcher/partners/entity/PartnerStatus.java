@@ -2,8 +2,9 @@ package com.dispatcher.partners.entity;
 
 public enum PartnerStatus {
 
-    CREATED(10),
-    INITIALIZED(20);
+    UNDEFINED(10),
+    ACTIVE(20),
+    INACTIVE(20);
 
     private final int status;
 

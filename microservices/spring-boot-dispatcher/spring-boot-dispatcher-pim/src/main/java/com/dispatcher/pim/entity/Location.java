@@ -16,8 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 })
 @Data
 @Builder
-@Document(collection = "racks")
-public class Rack extends BaseEntity {
+@Document(collection = "location")
+public class Location extends BaseEntity {
 
     @Field(name = "warehouse_id")
     @JsonProperty(value = "warehouse_id")
@@ -27,9 +27,16 @@ public class Rack extends BaseEntity {
     @JsonProperty(value = "zone_id")
     private String zoneId;
 
+    @Field(name = "rack_id")
+    @JsonProperty(value = "rack_id")
+    private String rackId;
+
     @Field(name = "name")
     @JsonProperty(value = "name")
     private String name;
+
+    @JsonProperty(value = "dimension")
+    private Dimension dimension;
 
     @Field(name = "active")
     @JsonProperty(value = "active")
@@ -39,7 +46,7 @@ public class Rack extends BaseEntity {
     @JsonProperty(value = "client_id")
     private String clientId;
 
-    public static Rack valueOf() {
+    public static Location valueOf() {
         return builder()
                 .build();
     }

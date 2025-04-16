@@ -60,6 +60,10 @@ public class Product extends BaseEntity {
     @JsonProperty(value = "tags")
     private List<String> tags;
 
+    @Field(name = "has_attributes")
+    @JsonProperty(value = "has_attributes")
+    private Boolean hadAttributes;
+
     public static Product valueOf() {
         return builder()
                 .build();

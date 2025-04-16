@@ -30,6 +30,9 @@ public class Partner extends BaseEntity {
     @JsonProperty(value = "contact")
     private Contact contact;
 
+    @JsonProperty(value = "address")
+    private Address address;
+
     public static Partner valueOf() {
         return builder()
                 .build();
