@@ -9,7 +9,7 @@ import java.util.List;
 //@RepositoryRestResource(collectionResourceRel = "partners", path = "partners")
 @Repository
 public interface PartnerRepository extends MongoRepository<Partner, String> {
-    List<Partner> findByPhone(String phone);
 
+    List<Partner> findByPhone(String phone);
     List<Partner> findByName(String name);
 }

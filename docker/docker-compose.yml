@@ -240,8 +240,8 @@ services:
       - /data/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: PostgresRW
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: OdooRW
     networks:
       - portainer
 
@@ -251,14 +251,14 @@ services:
     restart: always
     environment:
       HOST: postgres
-      USER: postgres
-      PASSWORD: PostgresRW
+      USER: odoo
+      PASSWORD: OdooRW
     depends_on:
       - postgres
     ports:
       - 8069:8069
     volumes:
-      - /data/odoo/config:/etc/odoo
+#      - /data/odoo/config:/etc/odoo
       - /data/odoo/extra-addons:/mnt/extra-addons
       - /data/odoo/data:/var/lib/odoo
     links:

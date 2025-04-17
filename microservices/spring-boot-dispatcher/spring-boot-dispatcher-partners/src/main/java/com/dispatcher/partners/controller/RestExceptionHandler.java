@@ -3,7 +3,6 @@ package com.dispatcher.partners.controller;
 import com.dispatcher.service.exception.DataNotFoundException;
 import org.ameba.http.Response;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

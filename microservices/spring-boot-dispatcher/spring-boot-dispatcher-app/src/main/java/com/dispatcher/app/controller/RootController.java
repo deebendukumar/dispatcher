@@ -1,4 +1,4 @@
-package com.dispatcher.partners.controller;
+package com.dispatcher.app.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

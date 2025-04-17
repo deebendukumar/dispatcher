@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
+        <version>3.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dispatcher</groupId>
@@ -67,7 +67,8 @@
         <!--apache dependencies-->
         <org.apache.commons.io.version>2.13.0</org.apache.commons.io.version>
         <spring-data-bom.version>2023.1.5</spring-data-bom.version> <!-- in line with boot -->
-        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version> <!-- in line with boot / hibernate-core -->
+        <jakarta.persistence-api.version>3.1.0
+        </jakarta.persistence-api.version> <!-- in line with boot / hibernate-core -->
         <org.apache.poi.version>5.2.2</org.apache.poi.version>
 
         <!--google dependencies-->
@@ -116,7 +117,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
 
             <!--apache dependencies-->
             <dependency>
@@ -168,12 +168,11 @@
                 <version>14.0.0</version>
             </dependency>
 
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>javax.servlet</groupId>-->
+<!--                <artifactId>servlet-api</artifactId>-->
+<!--                <version>2.5</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>jakarta.persistence</groupId>
                 <artifactId>jakarta.persistence-api</artifactId>
@@ -210,10 +209,26 @@
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>2.8.5</version>
             </dependency>
+
             <!-- project related -->
             <dependency>
                 <groupId>com.dispatcher.service</groupId>
                 <artifactId>spring-boot-dispatcher-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.partners</groupId>
+                <artifactId>spring-boot-dispatcher-partners</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.pim</groupId>
+                <artifactId>spring-boot-dispatcher-pim</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.inventory</groupId>
+                <artifactId>spring-boot-dispatcher-inventory</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -271,11 +286,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Springdoc OpenAPI UI dependency -->
-<!--        <dependency>-->
-<!--            <groupId>org.springdoc</groupId>-->
-<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

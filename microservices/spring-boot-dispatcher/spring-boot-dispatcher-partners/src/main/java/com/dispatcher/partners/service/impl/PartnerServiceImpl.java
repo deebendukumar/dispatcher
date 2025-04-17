@@ -83,6 +83,4 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
                 })
                 .orElseThrow(() -> new NoSuchElementException("Partner with id " + id + " not found"));
     }
-
-
 }

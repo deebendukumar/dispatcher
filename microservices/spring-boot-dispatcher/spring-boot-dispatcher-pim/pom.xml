@@ -11,9 +11,6 @@
     <artifactId>spring-boot-dispatcher-pim</artifactId>
     <name>spring-boot-dispatcher-pim</name>
     <description></description>
-    <properties>
-        <start-class>com.dispatcher.pim.Application</start-class>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,20 +67,6 @@
 
     <build>
         <finalName>${project.name}-${project.version}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
 </project>
