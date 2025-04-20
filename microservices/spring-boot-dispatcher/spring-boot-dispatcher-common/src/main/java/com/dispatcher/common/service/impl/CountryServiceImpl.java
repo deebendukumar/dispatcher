@@ -3,7 +3,7 @@ package com.dispatcher.common.service.impl;
 import com.dispatcher.service.entity.Country;
 import com.dispatcher.common.service.CountryService;
 import com.dispatcher.service.odoo.api.*;
-import com.dispatcher.service.odoo.facade.OdooCountryFacade;
+import com.dispatcher.service.odoo.facade.CountryFacade;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 import org.slf4j.Logger;
@@ -24,13 +24,13 @@ public class CountryServiceImpl implements CountryService<Country> {
     private final Translator translator;
     private final Environment environment;
     private final Session session;
-    private final OdooCountryFacade facade;
+    private final CountryFacade facade;
 
     CountryServiceImpl(Environment environment, Translator translator, Session session) {
         this.environment = environment;
         this.translator = translator;
         this.session = session;
-        this.facade = new OdooCountryFacade(session);
+        this.facade = new CountryFacade(session);
     }
 
     @Override

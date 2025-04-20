@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OdooUserFacade implements OdooInterface<Currency> {
+public class UserFacade implements OdooCommonInterface<Currency> {
 
-    private static final Logger logger = LoggerFactory.getLogger(OdooUserFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserFacade.class);
 
     private final String _MODEL = "res.users";
     private final Session session;
 
-    public OdooUserFacade(Session session) {
+    public UserFacade(Session session) {
         this.session = session;
     }
 
@@ -52,20 +52,5 @@ public class OdooUserFacade implements OdooInterface<Currency> {
             e.printStackTrace();
         }
         return result;
-    }
-
-    @Override
-    public Currency create(Currency param) {
-        throw new NotImplementedException("Method not implemented");
-    }
-
-    @Override
-    public Currency update(Integer id, Currency param) {
-        throw new NotImplementedException("Method not implemented");
-    }
-
-    @Override
-    public void delete(Integer id) {
-        throw new NotImplementedException("Method not implemented");
     }
 }

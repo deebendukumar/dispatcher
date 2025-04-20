@@ -6,7 +6,7 @@ import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
 import com.dispatcher.service.odoo.api.*;
-import com.dispatcher.service.odoo.facade.OdooPartnerFacade;
+import com.dispatcher.service.odoo.facade.PartnerFacade;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
@@ -29,14 +29,14 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     private final Translator translator;
     private final Environment environment;
     private final Session session;
-    private final OdooPartnerFacade facade;
+    private final PartnerFacade facade;
 
     PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
         this.environment = environment;
         this.repository = repository;
         this.translator = translator;
         this.session = session;
-        this.facade = new OdooPartnerFacade(session);
+        this.facade = new PartnerFacade(session);
     }
 
     @Override
@@ -50,31 +50,21 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public List<Partner> findByPhone(String phone) {
-        return null;
+        List<Partner> result = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
+        return result;
     }
 
     @Override
     @Measured
     public List<Partner> findByName(String name) {
-        return null;
+        List<Partner> result = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
+        return result;
     }
 
     @Override
     @Measured
     public List<Partner> findAll() {
-        List<Partner> result = new ArrayList<>();
-        try {
-            ObjectAdapter partners = session.getObjectAdapter("res.partner");
-            FilterCollection filters = new FilterCollection();
-//            filters.add("name","=","SO001");
-            RowCollection list = partners.searchAndReadObject(filters, new String[]{});
-//            RowCollection list = partners.searchAndReadObject(filters, new String[]{"l10n_in_pan","type","activity_state", "vat", "is_blacklisted", "active"});
-            for (Row row : list) {
-                logger.info(row.toJson());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        List<Partner> result = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
         return result;
     }
 
@@ -100,14 +90,15 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public Partner update(String id, Partner partner) {
-        return repository.findById(id)
-                .map(existingPartner -> {
-                    partner.setId(id);
-                    return repository.save(partner);
-                })
-                .orElseThrow(() -> new DataNotFoundException(translator,
-                        MessageCodes.TO_WITH_PK_NOT_FOUND,
-                        new String[]{id}, id));
+//        return repository.findById(id)
+//                .map(existingPartner -> {
+//                    partner.setId(id);
+//                    return repository.save(partner);
+//                })
+//                .orElseThrow(() -> new DataNotFoundException(translator,
+//                        MessageCodes.TO_WITH_PK_NOT_FOUND,
+//                        new String[]{id}, id));
+        return null;
     }
 
     @Override

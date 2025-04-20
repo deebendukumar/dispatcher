@@ -10,23 +10,25 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 public class Address implements Auditable {
 
-    @Field("street")
     @JsonProperty(value = "street")
     private String street;
 
-    @Field("city")
+    @JsonProperty(value = "street")
+    private String street2;
+
     @JsonProperty(value = "city")
     private String city;
 
-    @Field("state")
     @JsonProperty(value = "state")
     private String state;
 
-    @Field("country")
     @JsonProperty(value = "country")
     private String country;
 
-    @Field("zip")
+    @JsonProperty(value = "country_id")
+    private Integer countryId;
+
+
     @JsonProperty(value = "zip")
     private String zip;
 

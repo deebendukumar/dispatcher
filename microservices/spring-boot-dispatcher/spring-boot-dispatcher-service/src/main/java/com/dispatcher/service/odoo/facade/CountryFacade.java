@@ -1,28 +1,26 @@
 package com.dispatcher.service.odoo.facade;
 
 import com.dispatcher.service.entity.Country;
-import com.dispatcher.service.entity.Currency;
 import com.dispatcher.service.odoo.api.*;
-import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OdooCountryFacade implements OdooInterface<Country> {
+public class CountryFacade implements OdooCommonInterface<Country> {
 
-    private static final Logger logger = LoggerFactory.getLogger(OdooCountryFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(CountryFacade.class);
 
     private final String _MODEL = "res.country";
     private final Session session;
-    private final OdooCurrencyFacade currencyFacade;
-    private final OdooCountryStateFacade odooCountryStateFacade;
+    private final CurrencyFacade currencyFacade;
+    private final CountryStateFacade odooCountryStateFacade;
 
-    public OdooCountryFacade(Session session) {
+    public CountryFacade(Session session) {
         this.session = session;
-        this.currencyFacade = new OdooCurrencyFacade(session);
-        this.odooCountryStateFacade = new OdooCountryStateFacade(session);
+        this.currencyFacade = new CurrencyFacade(session);
+        this.odooCountryStateFacade = new CountryStateFacade(session);
     }
 
     @Override
@@ -56,21 +54,6 @@ public class OdooCountryFacade implements OdooInterface<Country> {
             logger.error("error: ", e.getMessage());
         }
         return result;
-    }
-
-    @Override
-    public Country create(Country param) {
-        throw new NotImplementedException("Method not implemented");
-    }
-
-    @Override
-    public Country update(Integer id, Country param) {
-        throw new NotImplementedException("Method not implemented");
-    }
-
-    @Override
-    public void delete(Integer id) {
-        throw new NotImplementedException("Method not implemented");
     }
 
     private Country parse(Row row) {
