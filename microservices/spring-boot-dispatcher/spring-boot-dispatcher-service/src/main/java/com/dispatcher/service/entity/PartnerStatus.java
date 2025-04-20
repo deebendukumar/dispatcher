@@ -1,4 +1,4 @@
-package com.dispatcher.partners.entity;
+package com.dispatcher.service.entity;
 
 public enum PartnerStatus {
 

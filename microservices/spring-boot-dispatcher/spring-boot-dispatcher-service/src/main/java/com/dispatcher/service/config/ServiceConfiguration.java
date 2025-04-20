@@ -10,7 +10,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@ComponentScan(basePackages = {"com.dispatcher.service"})
+@ComponentScan("com.dispatcher.service")
 public class ServiceConfiguration {
 
     private final Environment environment;

@@ -1,12 +1,11 @@
-package com.dispatcher.partners.entity;
+package com.dispatcher.service.entity;
 
 import com.dispatcher.service.base.entity.BaseEntity;
+import com.dispatcher.service.odoo.api.Row;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @JsonPropertyOrder({
         "id",
@@ -16,14 +15,17 @@ import org.springframework.data.mongodb.core.mapping.Field;
 })
 @Data
 @Builder
-@Document(collection = "partners")
 public class Partner extends BaseEntity {
 
-    @Field("name")
     @JsonProperty(value = "name")
     private String name;
 
-    @Field("code")
+    @JsonProperty(value = "email")
+    private String email;
+
+    @JsonProperty(value = "phone")
+    private String phone;
+
     @JsonProperty(value = "code")
     private String code;
 
@@ -33,7 +35,7 @@ public class Partner extends BaseEntity {
     @JsonProperty(value = "address")
     private Address address;
 
-    public static Partner valueOf() {
+    public static Partner valueOf(Row row) {
         return builder()
                 .build();
     }

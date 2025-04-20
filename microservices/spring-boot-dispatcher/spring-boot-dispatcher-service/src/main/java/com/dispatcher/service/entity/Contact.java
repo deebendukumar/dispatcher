@@ -1,7 +1,6 @@
-package com.dispatcher.partners.entity;
+package com.dispatcher.service.entity;
 
 import com.dispatcher.service.base.entity.Auditable;
-import com.dispatcher.service.base.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;

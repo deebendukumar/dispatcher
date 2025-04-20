@@ -1,17 +1,20 @@
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.partners.entity.Partner;
+import com.dispatcher.service.entity.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
+import com.dispatcher.service.odoo.api.*;
+import com.dispatcher.service.odoo.facade.OdooPartnerFacade;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
@@ -20,12 +23,20 @@ import java.util.Optional;
 @TxService
 public class PartnerServiceImpl implements PartnerService<Partner> {
 
+    private static final Logger logger = LoggerFactory.getLogger(PartnerServiceImpl.class);
+
     private final PartnerRepository repository;
     private final Translator translator;
+    private final Environment environment;
+    private final Session session;
+    private final OdooPartnerFacade facade;
 
-    PartnerServiceImpl(PartnerRepository repository, Translator translator) {
+    PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
+        this.environment = environment;
         this.repository = repository;
         this.translator = translator;
+        this.session = session;
+        this.facade = new OdooPartnerFacade(session);
     }
 
     @Override
@@ -39,25 +50,51 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public List<Partner> findByPhone(String phone) {
-        return repository.findByPhone(phone);
+        return null;
     }
 
     @Override
     @Measured
     public List<Partner> findByName(String name) {
-        return repository.findByName(name);
+        return null;
     }
 
     @Override
     @Measured
     public List<Partner> findAll() {
-        return repository.findAll();
+        List<Partner> result = new ArrayList<>();
+        try {
+            ObjectAdapter partners = session.getObjectAdapter("res.partner");
+            FilterCollection filters = new FilterCollection();
+//            filters.add("name","=","SO001");
+            RowCollection list = partners.searchAndReadObject(filters, new String[]{});
+//            RowCollection list = partners.searchAndReadObject(filters, new String[]{"l10n_in_pan","type","activity_state", "vat", "is_blacklisted", "active"});
+            for (Row row : list) {
+                logger.info(row.toJson());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     @Measured
     public Partner create(Partner partner) {
-        return repository.save(partner);
+        Partner result = null;
+        try {
+            ObjectAdapter partners = session.getObjectAdapter("res.partner");
+            Row newPartner = partners.getNewRow(new String[]{"name", "ref", "email", "field1", "field2"});
+            newPartner.put("name", "Jhon Doe");
+            newPartner.put("ref", "Reference value");
+            newPartner.put("email", "personalemail@mail.com");
+            newPartner.put("field1", "1");
+            newPartner.put("field2", "2");
+            partners.createObject(newPartner);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

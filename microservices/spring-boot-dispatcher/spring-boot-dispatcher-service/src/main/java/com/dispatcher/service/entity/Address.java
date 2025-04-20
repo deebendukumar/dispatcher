@@ -1,4 +1,4 @@
-package com.dispatcher.partners.entity;
+package com.dispatcher.service.entity;
 
 import com.dispatcher.service.base.entity.Auditable;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,18 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @Builder
 public class Address implements Auditable {
-
-    @Field("first_name")
-    @JsonProperty(value = "first_name")
-    private String firstName;
-
-    @Field("last_name")
-    @JsonProperty(value = "last_name")
-    private String lastName;
-
-    @Field("company")
-    @JsonProperty(value = "company")
-    private String company;
 
     @Field("street")
     @JsonProperty(value = "street")
@@ -38,9 +26,9 @@ public class Address implements Auditable {
     @JsonProperty(value = "country")
     private String country;
 
-    @Field("zip_code")
-    @JsonProperty(value = "zip_code")
-    private String zipCode;
+    @Field("zip")
+    @JsonProperty(value = "zip")
+    private String zip;
 
     public static Address valueOf() {
         return builder()

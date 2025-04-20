@@ -1,4 +1,4 @@
-package com.dispatcher.partners.controller;
+package com.dispatcher.app.controller;
 
 import com.dispatcher.service.exception.DataNotFoundException;
 import org.ameba.http.Response;
