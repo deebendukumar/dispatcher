@@ -1,6 +1,6 @@
 package com.dispatcher.service.odoo.facade;
 
-import com.dispatcher.service.entity.Partner;
+import com.dispatcher.service.model.Partner;
 import com.dispatcher.service.exception.DataNotFoundException;
 import com.dispatcher.service.exception.DispatcherRuntimeException;
 import com.dispatcher.service.odoo.api.*;

@@ -25,12 +25,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
             <groupId>com.dispatcher.service</groupId>
             <artifactId>spring-boot-dispatcher-service</artifactId>
         </dependency>

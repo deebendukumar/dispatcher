@@ -1,10 +1,9 @@
-package com.dispatcher.service.entity;
+package com.dispatcher.service.model;
 
 import com.dispatcher.service.base.entity.Auditable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Builder

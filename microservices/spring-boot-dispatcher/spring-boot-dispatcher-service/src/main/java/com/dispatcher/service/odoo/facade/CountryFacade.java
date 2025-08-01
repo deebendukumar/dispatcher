@@ -1,6 +1,6 @@
 package com.dispatcher.service.odoo.facade;
 
-import com.dispatcher.service.entity.Country;
+import com.dispatcher.service.model.Country;
 import com.dispatcher.service.odoo.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryFacade implements OdooCommonInterface<Country> {
+public class CountryFacade {
 
     private static final Logger logger = LoggerFactory.getLogger(CountryFacade.class);
 
@@ -23,7 +23,6 @@ public class CountryFacade implements OdooCommonInterface<Country> {
         this.odooCountryStateFacade = new CountryStateFacade(session);
     }
 
-    @Override
     public Country findByPKey(Integer id) {
         Country result = null;
         try {
@@ -40,7 +39,6 @@ public class CountryFacade implements OdooCommonInterface<Country> {
         return result;
     }
 
-    @Override
     public List<Country> find() {
         List<Country> result = new ArrayList<>();
         try {

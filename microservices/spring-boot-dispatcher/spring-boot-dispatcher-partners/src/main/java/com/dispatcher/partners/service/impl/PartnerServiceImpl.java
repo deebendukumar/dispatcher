@@ -1,6 +1,6 @@
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.service.entity.Partner;
+import com.dispatcher.service.model.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;

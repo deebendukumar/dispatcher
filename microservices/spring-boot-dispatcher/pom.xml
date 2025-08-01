@@ -74,7 +74,8 @@
         <!--google dependencies-->
         <com.google.guava.version>31.1-jre</com.google.guava.version>
 
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.6.0</org.mapstruct.version>
+        <org.projectlombok.version>1.18.36</org.projectlombok.version>
     </properties>
     <modules>
         <module>spring-boot-dispatcher-app</module>
@@ -182,6 +183,13 @@
                 <version>${jakarta.persistence-api.version}</version>
             </dependency>
             <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+
+
+            <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${org.mapstruct.version}</version>
@@ -284,10 +292,19 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>io.interface21</groupId>
+            <artifactId>ameba-lib</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
         <!--external-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -309,19 +326,28 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <!--To get Javadoc and Source jar files generated, you have to configure the Javadoc and source Maven plugins.-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
         </plugins>
     </build>

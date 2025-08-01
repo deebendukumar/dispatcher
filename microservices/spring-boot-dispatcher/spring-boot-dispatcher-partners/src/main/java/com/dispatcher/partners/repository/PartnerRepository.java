@@ -1,6 +1,6 @@
 package com.dispatcher.partners.repository;
 
-import com.dispatcher.service.entity.Partner;
+import com.dispatcher.service.model.Partner;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

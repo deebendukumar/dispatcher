@@ -1,10 +1,8 @@
 package com.dispatcher.common.controller;
 
-import com.dispatcher.common.service.CountryService;
 import com.dispatcher.common.service.CountryStateService;
 import com.dispatcher.service.base.http.AbstractWebController;
-import com.dispatcher.service.entity.Country;
-import com.dispatcher.service.entity.State;
+import com.dispatcher.service.model.State;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

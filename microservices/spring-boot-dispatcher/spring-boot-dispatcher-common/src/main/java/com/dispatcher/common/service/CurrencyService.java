@@ -1,6 +1,6 @@
 package com.dispatcher.common.service;
 
-import com.dispatcher.service.entity.Currency;
+import com.dispatcher.service.model.Currency;
 
 import java.util.List;
 

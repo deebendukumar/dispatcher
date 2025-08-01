@@ -1,6 +1,6 @@
 package com.dispatcher.common.service;
 
-import com.dispatcher.service.entity.Country;
+import com.dispatcher.service.model.Country;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.dispatcher.service.odoo.facade;
 
 import com.dispatcher.service.base.entity.Auditable;
-import com.dispatcher.service.entity.Partner;
+import com.dispatcher.service.model.Partner;
 
 import java.util.List;
 import java.util.Optional;

@@ -57,11 +57,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>io.interface21</groupId>
             <artifactId>ameba-lib</artifactId>
             <optional>true</optional>

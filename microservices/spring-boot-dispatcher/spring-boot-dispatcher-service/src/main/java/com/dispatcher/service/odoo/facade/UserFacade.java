@@ -1,15 +1,14 @@
 package com.dispatcher.service.odoo.facade;
 
-import com.dispatcher.service.entity.Currency;
+import com.dispatcher.service.model.Currency;
 import com.dispatcher.service.odoo.api.*;
-import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFacade implements OdooCommonInterface<Currency> {
+public class UserFacade {
 
     private static final Logger logger = LoggerFactory.getLogger(UserFacade.class);
 
@@ -20,7 +19,6 @@ public class UserFacade implements OdooCommonInterface<Currency> {
         this.session = session;
     }
 
-    @Override
     public List<Currency> find() {
         List<Currency> result = new ArrayList<>();
         try {
@@ -37,7 +35,6 @@ public class UserFacade implements OdooCommonInterface<Currency> {
         return result;
     }
 
-    @Override
     public Currency findByPKey(Integer id) {
         Currency result = null;
         try {

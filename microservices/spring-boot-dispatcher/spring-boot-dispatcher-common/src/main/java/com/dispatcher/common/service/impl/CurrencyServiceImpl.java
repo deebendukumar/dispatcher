@@ -1,6 +1,6 @@
 package com.dispatcher.common.service.impl;
 
-import com.dispatcher.service.entity.Currency;
+import com.dispatcher.service.model.Currency;
 import com.dispatcher.common.service.CurrencyService;
 import com.dispatcher.service.odoo.api.*;
 import org.ameba.annotation.TxService;

@@ -1,6 +1,6 @@
 package com.dispatcher.common.controller;
 
-import com.dispatcher.service.entity.Currency;
+import com.dispatcher.service.model.Currency;
 import com.dispatcher.common.service.CurrencyService;
 import com.dispatcher.service.base.http.AbstractWebController;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,6 +1,6 @@
 package com.dispatcher.common.service.impl;
 
-import com.dispatcher.service.entity.Country;
+import com.dispatcher.service.model.Country;
 import com.dispatcher.common.service.CountryService;
 import com.dispatcher.service.odoo.api.*;
 import com.dispatcher.service.odoo.facade.CountryFacade;

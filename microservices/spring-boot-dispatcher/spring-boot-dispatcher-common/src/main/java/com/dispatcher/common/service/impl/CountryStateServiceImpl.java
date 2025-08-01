@@ -1,7 +1,7 @@
 package com.dispatcher.common.service.impl;
 
 import com.dispatcher.common.service.CountryStateService;
-import com.dispatcher.service.entity.State;
+import com.dispatcher.service.model.State;
 import com.dispatcher.service.odoo.api.*;
 import com.dispatcher.service.odoo.facade.CountryStateFacade;
 import org.ameba.annotation.TxService;

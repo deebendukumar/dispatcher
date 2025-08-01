@@ -1,4 +1,4 @@
-package com.dispatcher.service.entity;
+package com.dispatcher.service.model;
 
 import com.dispatcher.service.base.entity.Auditable;
 import com.dispatcher.service.odoo.api.Row;
