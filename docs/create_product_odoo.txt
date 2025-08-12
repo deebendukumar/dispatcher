@@ -1,0 +1,18 @@
+# Create product attributes if they don't exist
+attribute_id = models.execute_kw(db, uid, password, 'product.attribute', 'create', [{'name': 'Color'}])
+
+# Create attribute values if they don't exist
+attribute_value_ids = models.execute_kw(db, uid, password, 'product.attribute.value', 'create', attribute_values)
+
+# Create a product template and link the product attributes to it
+product_template_id = models.execute_kw(db, uid, password, 'product.template', 'create', [{
+    'name': 'Green Ball',
+    'attribute_line_ids': [(0, 0, {'attribute_id': attribute_id, 'value_ids': [(6, 0, attribute_value_ids)]})]
+}])
+
+# Create product variants based on the product template
+product_variant_id = models.execute_kw(db, uid, password, 'product.product', 'create', [{
+    'name': 'Green Ball - White',
+    'product_tmpl_id': product_template_id,
+    'attribute_value_ids': [(6, 0, attribute_value_ids)]
+}])

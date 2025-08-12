@@ -86,3 +86,6 @@ local.properties
 
 # PDT-specific
 .buildpath
+
+# diagrams
+*.bkp
