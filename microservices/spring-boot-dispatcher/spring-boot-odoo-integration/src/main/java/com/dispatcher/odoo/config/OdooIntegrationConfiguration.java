@@ -22,16 +22,14 @@ public class OdooIntegrationConfiguration {
         this.environment = environment;
     }
 
-    public
     @Bean
-    Session session() throws Exception {
+    public Session session() throws Exception {
         Session session = new Session(RPCProtocol.RPC_HTTP,
-                this.environment.getProperty("odoo.host"),
-                Integer.parseInt(this.environment.getProperty("odoo.port")),
-                this.environment.getProperty("odoo.database"),
-                this.environment.getProperty("odoo.username"),
-                this.environment.getProperty("odoo.password"));
-        session.startSession();
+                environment.getProperty("odoo.host"),
+                Integer.parseInt(environment.getProperty("odoo.port")),
+                environment.getProperty("odoo.db"),
+                environment.getProperty("odoo.username"),
+                environment.getProperty("odoo.password"));
         return session;
     }
 }

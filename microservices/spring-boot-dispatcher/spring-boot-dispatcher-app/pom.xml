@@ -67,10 +67,10 @@
             <artifactId>xmlrpc-client</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.dispatcher.service</groupId>-->
-<!--            <artifactId>spring-boot-dispatcher-service</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.dispatcher.service</groupId>
+            <artifactId>spring-boot-dispatcher-service</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.dispatcher.common</groupId>
             <artifactId>spring-boot-dispatcher-common</artifactId>
@@ -79,14 +79,6 @@
             <groupId>com.dispatcher.partners</groupId>
             <artifactId>spring-boot-dispatcher-partners</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.dispatcher.pim</groupId>-->
-        <!--            <artifactId>spring-boot-dispatcher-pim</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.dispatcher.inventory</groupId>-->
-        <!--            <artifactId>spring-boot-dispatcher-inventory</artifactId>-->
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

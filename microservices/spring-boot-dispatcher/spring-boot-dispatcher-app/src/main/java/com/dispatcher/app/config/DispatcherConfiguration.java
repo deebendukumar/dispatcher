@@ -15,15 +15,5 @@ public class DispatcherConfiguration {
         this.environment = environment;
     }
 
-    @Bean
-    public Session session() {
-        Session session = new Session(RPCProtocol.RPC_HTTP,
-                environment.getProperty("odoo.host"),
-                Integer.parseInt(environment.getProperty("odoo.port")),
-                environment.getProperty("odoo.db"),
-                environment.getProperty("odoo.username"),
-                environment.getProperty("odoo.password"));
-        return session;
-    }
 }
 

@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntFunction;
 
 public abstract class OdooApiClient {
 
@@ -35,6 +37,15 @@ public abstract class OdooApiClient {
     public List<Row> find(FilterCollection filters) throws XmlRpcException, OdooApiException {
         List<Row> result = new ArrayList<>();
         RowCollection list = adapter.searchAndReadObject(filters, new String[]{});
+        for (Row row : list) {
+            result.add(row);
+        }
+        return result;
+    }
+
+    public List<Row> find(FilterCollection filters, List<String> fields) throws XmlRpcException, OdooApiException {
+        List<Row> result = new ArrayList<>();
+        RowCollection list = adapter.searchAndReadObject(filters, fields.toArray(new String[0]));
         for (Row row : list) {
             result.add(row);
         }

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,15 +22,17 @@ public class WarehouseController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 
-    private final WarehouseService<Warehouse> service;
+    private final WarehouseService<HashMap<String, Object>> service;
 
-    WarehouseController(WarehouseService<Warehouse> service) {
+    WarehouseController(WarehouseService<HashMap<String, Object>> service) {
         this.service = service;
     }
 
+
+
     @GetMapping(path = "")
     @Operation(summary = "Get all warehouses")
-    public List<Warehouse> find(@RequestParam("name") Optional<String> code,
+    public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,
                                 HttpServletRequest request,
                                 HttpServletResponse response) {
         return service.find(code);
@@ -37,7 +40,7 @@ public class WarehouseController extends AbstractWebController {
 
     @GetMapping(path = "/{id}")
     @Operation(summary = "Get warehouse by ID")
-    public Warehouse findById(@PathVariable Integer id,
+    public HashMap<String, Object> findById(@PathVariable Integer id,
                               HttpServletRequest request,
                               HttpServletResponse response) {
         return service.findByPKey(id);

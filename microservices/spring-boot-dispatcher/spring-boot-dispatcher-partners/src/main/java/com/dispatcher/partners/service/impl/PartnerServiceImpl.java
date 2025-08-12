@@ -33,7 +33,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     private final Translator translator;
     private final Environment environment;
     private final Session session;
-    private PartnerFacade facade;
+    private final PartnerFacade facade;
 
     PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
         this.environment = environment;
