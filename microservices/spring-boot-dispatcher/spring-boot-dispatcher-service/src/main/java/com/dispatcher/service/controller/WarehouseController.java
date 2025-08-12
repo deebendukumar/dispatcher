@@ -1,8 +1,7 @@
 package com.dispatcher.service.controller;
 
-import com.dispatcher.service.service.WarehouseService;
 import com.dispatcher.service.base.http.AbstractWebController;
-import com.dispatcher.service.model.Warehouse;
+import com.dispatcher.service.service.impl.WarehouseServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,9 +21,9 @@ public class WarehouseController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 
-    private final WarehouseService<HashMap<String, Object>> service;
+    private final WarehouseServiceImpl service;
 
-    WarehouseController(WarehouseService<HashMap<String, Object>> service) {
+    WarehouseController(WarehouseServiceImpl service) {
         this.service = service;
     }
 
@@ -35,7 +34,7 @@ public class WarehouseController extends AbstractWebController {
     public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,
                                 HttpServletRequest request,
                                 HttpServletResponse response) {
-        return service.find(code);
+        return service.findAll();
     }
 
     @GetMapping(path = "/{id}")
