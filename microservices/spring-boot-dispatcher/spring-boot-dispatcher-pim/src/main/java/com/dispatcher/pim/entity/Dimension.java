@@ -1,11 +1,9 @@
 package com.dispatcher.pim.entity;
 
-import com.dispatcher.service.base.entity.Auditable;
-import com.dispatcher.service.base.entity.BaseEntity;
+import com.dispatcher.common.base.Auditable;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @JsonPropertyOrder({
         "id"

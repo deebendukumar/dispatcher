@@ -1,7 +1,7 @@
 package com.dispatcher.service.model;
 
-import com.dispatcher.service.base.entity.Auditable;
-import com.dispatcher.service.odoo.api.Row;
+import com.dispatcher.common.base.Auditable;
+import com.dispatcher.odoo.Row;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

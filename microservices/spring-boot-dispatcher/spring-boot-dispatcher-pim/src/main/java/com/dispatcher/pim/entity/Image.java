@@ -1,6 +1,6 @@
 package com.dispatcher.pim.entity;
 
-import com.dispatcher.service.base.entity.Auditable;
+import com.dispatcher.common.base.Auditable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package com.dispatcher.app.config;
 
-import com.dispatcher.service.odoo.api.OdooXmlRpcProxy;
-import com.dispatcher.service.odoo.api.Session;
+import com.dispatcher.odoo.RPCProtocol;
+import com.dispatcher.odoo.Session;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -17,7 +17,7 @@ public class DispatcherConfiguration {
 
     @Bean
     public Session session() {
-        Session session = new Session(OdooXmlRpcProxy.RPCProtocol.RPC_HTTP,
+        Session session = new Session(RPCProtocol.RPC_HTTP,
                 environment.getProperty("odoo.host"),
                 Integer.parseInt(environment.getProperty("odoo.port")),
                 environment.getProperty("odoo.db"),

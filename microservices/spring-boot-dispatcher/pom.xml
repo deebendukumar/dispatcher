@@ -94,6 +94,7 @@
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>
         <module>spring-boot-dispatcher-uaa</module>
+        <module>spring-boot-odoo-integration</module>
     </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
@@ -140,6 +141,16 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpclient</artifactId>
                 <version>4.5.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>1.70</version> <!-- Or the latest version compatible with your JDK -->
+            </dependency>
+            <dependency>
+                <groupId>org.bitcoinj</groupId>
+                <artifactId>bitcoinj-core</artifactId>
+                <version>0.17-rc2</version> <!-- Use the latest version available in Maven Central -->
             </dependency>
 
             <!--spring framework related-->
@@ -240,6 +251,11 @@
             <dependency>
                 <groupId>com.dispatcher.inventory</groupId>
                 <artifactId>spring-boot-dispatcher-inventory</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.odoo</groupId>
+                <artifactId>spring-boot-odoo-integration</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

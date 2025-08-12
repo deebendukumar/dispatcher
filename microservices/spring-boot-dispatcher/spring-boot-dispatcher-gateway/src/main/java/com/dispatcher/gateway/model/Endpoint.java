@@ -1,6 +1,6 @@
 package com.dispatcher.gateway.model;
 
-import com.dispatcher.service.base.entity.Auditable;
+import com.dispatcher.common.base.Auditable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

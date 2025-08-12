@@ -1,15 +1,19 @@
 package com.dispatcher.partners.service.impl;
 
+import com.dispatcher.odoo.ObjectAdapter;
+import com.dispatcher.odoo.Row;
+import com.dispatcher.odoo.Session;
+import com.dispatcher.odoo.exception.OdooApiException;
 import com.dispatcher.service.model.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
-import com.dispatcher.service.odoo.api.*;
-import com.dispatcher.service.odoo.facade.PartnerFacade;
+import com.dispatcher.odoo.facade.PartnerFacade;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
+import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -29,14 +33,26 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     private final Translator translator;
     private final Environment environment;
     private final Session session;
-    private final PartnerFacade facade;
+    private PartnerFacade facade;
 
     PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
         this.environment = environment;
         this.repository = repository;
         this.translator = translator;
         this.session = session;
-        this.facade = new PartnerFacade(session);
+        this.facade = createPartnerFacade(session);
+    }
+
+    public static  PartnerFacade createPartnerFacade(Session session) {
+        PartnerFacade facade = null;
+        try {
+            facade = new PartnerFacade(session);
+        } catch (XmlRpcException e) {
+            logger.error("error creating partner facade {}", e.getMessage());
+        } catch (OdooApiException e) {
+            logger.error("error creating partner facade {}", e.getMessage());
+        }
+        return facade;
     }
 
     @Override
@@ -50,21 +66,42 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     @Override
     @Measured
     public List<Partner> findByPhone(String phone) {
-        List<Partner> result = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
+        List<Partner> result = null;
+        try {
+            List<Row> list = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
+        } catch (OdooApiException e) {
+            e.printStackTrace();
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
     @Override
     @Measured
     public List<Partner> findByName(String name) {
-        List<Partner> result = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
+        List<Partner> result = null;
+        try {
+            List<Row> list = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
+        } catch (OdooApiException e) {
+            e.printStackTrace();
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 
     @Override
     @Measured
     public List<Partner> findAll() {
-        List<Partner> result = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
+        List<Partner> result = null;
+        try {
+            List<Row> list = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
+        } catch (OdooApiException e) {
+            e.printStackTrace();
+        } catch (XmlRpcException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 

@@ -1,13 +1,11 @@
 package com.dispatcher.service.integration.odoo;
 
-import com.dispatcher.service.odoo.api.*;
-import io.swagger.v3.oas.models.security.SecurityScheme;
+import com.dispatcher.odoo.*;
 import lombok.SneakyThrows;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Vector;
 
@@ -75,15 +73,15 @@ public class TestConnection {
 
     public static void main(String[] args) {
 //        boolean status = login();
-        session = new Session(OdooXmlRpcProxy.RPCProtocol.RPC_HTTP, host, port, db, username, password);
+        session = new Session(RPCProtocol.RPC_HTTP, host, port, db, username, password);
         try {
             session.startSession();
             ObjectAdapter partners = session.getObjectAdapter("res.partner");
             FilterCollection filters = new FilterCollection();
 //            filters.add("name","=","SO001");
 //            RowCollection list = partners.searchAndReadObject(filters, new String[]{});
-            RowCollection list = partners.searchAndReadObject(filters, new String[]{"name","state","partner_id"});
-            for(Row row : list) {
+            RowCollection list = partners.searchAndReadObject(filters, new String[]{"name", "state", "partner_id"});
+            for (Row row : list) {
                 System.out.println(row.getID());
                 System.out.println(row.toJson());
             }

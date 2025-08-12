@@ -1,6 +1,6 @@
 package com.dispatcher.app;
 
-import com.dispatcher.service.odoo.api.Session;
+import com.dispatcher.odoo.Session;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
