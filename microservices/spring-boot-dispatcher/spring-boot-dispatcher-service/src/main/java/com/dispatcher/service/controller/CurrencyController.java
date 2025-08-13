@@ -1,8 +1,6 @@
 package com.dispatcher.service.controller;
 
-import com.dispatcher.service.model.Currency;
-import com.dispatcher.service.service.CurrencyService;
-import com.dispatcher.service.base.http.AbstractWebController;
+import com.dispatcher.service.service.impl.CurrencyApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -20,24 +19,24 @@ public class CurrencyController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(CurrencyController.class);
 
-    private final CurrencyService<Currency> service;
+    private final CurrencyApiService service;
 
-    CurrencyController(CurrencyService<Currency> service) {
+    CurrencyController(CurrencyApiService service) {
         this.service = service;
     }
 
     @GetMapping(path = "")
     @Operation(summary = "Get all currencies")
-    public List<Currency> find(HttpServletRequest request,
-                               HttpServletResponse response) {
+    public List<HashMap<String, Object>> find(HttpServletRequest request,
+                                              HttpServletResponse response) {
         return service.findAll();
     }
 
     @GetMapping(path = "/{id}")
     @Operation(summary = "Get partner by ID")
-    public Currency findById(@PathVariable Integer id,
-                             HttpServletRequest request,
-                             HttpServletResponse response) {
+    public HashMap<String, Object> findById(@PathVariable Integer id,
+                                            HttpServletRequest request,
+                                            HttpServletResponse response) {
         return service.findByPKey(id);
     }
 }

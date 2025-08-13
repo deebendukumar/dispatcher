@@ -6,16 +6,13 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+public class CurrencyApiClient extends OdooApiClient {
 
-public class CurrencyFacade extends OdooApiClient {
-
-    private static final Logger logger = LoggerFactory.getLogger(CurrencyFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(CurrencyApiClient.class);
 
     private static final String _MODEL = "res.currency";
 
-    public CurrencyFacade(Session session) throws XmlRpcException, OdooApiException {
+    public CurrencyApiClient(Session session) throws XmlRpcException, OdooApiException {
         super(session, _MODEL);
     }
 }

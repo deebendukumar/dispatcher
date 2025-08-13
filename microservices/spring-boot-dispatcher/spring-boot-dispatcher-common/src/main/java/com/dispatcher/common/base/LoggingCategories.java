@@ -1,4 +1,4 @@
-package com.dispatcher.service.logging;
+package com.dispatcher.common.base;
 
 public class LoggingCategories {
 

@@ -1,6 +1,6 @@
 package com.dispatcher.gateway.model;
 
-import com.dispatcher.service.base.entity.BaseEntity;
+import com.dispatcher.common.base.BaseEntity;
 
 import static org.apache.commons.lang3.Validate.notBlank;
 

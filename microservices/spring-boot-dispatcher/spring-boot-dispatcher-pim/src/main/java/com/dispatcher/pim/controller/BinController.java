@@ -2,7 +2,6 @@ package com.dispatcher.pim.controller;
 
 import com.dispatcher.pim.entity.Bin;
 import com.dispatcher.pim.service.BinService;
-import com.dispatcher.service.base.http.AbstractWebController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,8 +1,6 @@
 package com.dispatcher.service.controller;
 
-import com.dispatcher.service.service.CountryStateService;
-import com.dispatcher.service.base.http.AbstractWebController;
-import com.dispatcher.service.model.State;
+import com.dispatcher.service.service.impl.CountryStateApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -22,16 +21,16 @@ public class CountryStateController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(CountryStateController.class);
 
-    private final CountryStateService<State> service;
+    private final CountryStateApiService service;
 
-    CountryStateController(CountryStateService<State> service) {
+    CountryStateController(CountryStateApiService service) {
         this.service = service;
     }
 
     @GetMapping(path = "")
     @Operation(summary = "Get all states of a country")
-    public List<State> find(HttpServletRequest request,
-                            HttpServletResponse response) {
+    public List<HashMap<String, Object>> find(HttpServletRequest request,
+                                              HttpServletResponse response) {
         return service.findAll();
     }
 }

@@ -4,24 +4,20 @@ import com.dispatcher.odoo.FilterCollection;
 import com.dispatcher.odoo.Row;
 import com.dispatcher.odoo.Session;
 import com.dispatcher.odoo.exception.OdooApiException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class WarehouseFacade extends OdooApiClient {
+public class WarehouseApiClient extends OdooApiClient {
 
-    private static final Logger logger = LoggerFactory.getLogger(WarehouseFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(WarehouseApiClient.class);
 
     private static final String _MODEL = "stock.warehouse";
 
-    public WarehouseFacade(Session session) throws XmlRpcException, OdooApiException {
+    public WarehouseApiClient(Session session) throws XmlRpcException, OdooApiException {
         super(session, _MODEL);
     }
 

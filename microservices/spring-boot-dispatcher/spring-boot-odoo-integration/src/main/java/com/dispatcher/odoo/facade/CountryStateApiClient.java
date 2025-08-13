@@ -6,13 +6,13 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CountryStateFacade extends OdooApiClient {
+public class CountryStateApiClient extends OdooApiClient {
 
-    private static final Logger logger = LoggerFactory.getLogger(CountryStateFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(CountryStateApiClient.class);
 
     private static final String _MODEL = "res.country.state";
 
-    public CountryStateFacade(Session session) throws XmlRpcException, OdooApiException {
+    public CountryStateApiClient(Session session) throws XmlRpcException, OdooApiException {
         super(session, _MODEL);
     }
 }

@@ -1,6 +1,5 @@
-package com.dispatcher.service.base.http;
+package com.dispatcher.common.base;
 
-import com.dispatcher.service.logging.LoggingCategories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.dispatcher.inventory.entity;
 
-import com.dispatcher.service.base.entity.BaseEntity;
+import com.dispatcher.common.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;

@@ -1,9 +1,10 @@
-package com.dispatcher.service.base.http;
+package com.dispatcher.common.base;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.JsonPath;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
@@ -71,8 +72,8 @@ public class Result<T extends Serializable> extends RepresentationModel<Result<T
                 s.contains("httpStatus") &&
                 s.contains(CLASS)) {
             var d = Configuration.defaultConfiguration().jsonProvider().parse(s);
-            String[] obj = read(d, "$.obj");
-            var r = new Result<>(read(d, "$.message"), read(d, "$.messageKey"), read(d, "$.httpStatus"), obj);
+            String[] obj = JsonPath.read(d, "$.obj");
+            var r = new Result<>(JsonPath.read(d, "$.message"), JsonPath.read(d, "$.messageKey"), JsonPath.read(d, "$.httpStatus"), obj);
             r.any();
         }
         throw new ParseException(String.format("String does not contain mandatory fields. [%s]", s), -1);

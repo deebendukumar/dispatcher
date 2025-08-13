@@ -1,6 +1,6 @@
 package com.dispatcher.preadvice.entity;
 
-import com.dispatcher.service.base.entity.BaseEntity;
+import com.dispatcher.common.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
@@ -8,7 +8,6 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 

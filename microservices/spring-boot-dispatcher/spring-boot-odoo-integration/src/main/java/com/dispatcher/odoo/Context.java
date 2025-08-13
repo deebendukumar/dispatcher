@@ -13,10 +13,15 @@ public class Context extends HashMap<String, Object> {
     final static String LangTag = "lang";
     final static String TimezoneTag = "tz";
 
-
+    /**
+     * The `putAll` function overrides the method in the superclass to add all key-value pairs from 
+     * the specified map to the current map.
+     * 
+     * @param m The parameter `m` in the `putAll` method is a map that accepts keys of type `String` 
+     * and values of type `Object` or any subtype of `Object`.
+     */
     @Override
     public void putAll(Map<? extends String, ? extends Object> m) {
-        // TODO Auto-generated method stub
         super.putAll(m);
     }
 
@@ -33,7 +38,8 @@ public class Context extends HashMap<String, Object> {
     }
 
     /**
-     * Sets the active_test context value.  If true, only active items are returned by default when calling the ReadObject item.
+     * Sets the active_test context value. If true, only active items are returned
+     * by default when calling the ReadObject item.
      *
      * @param active_test
      */

@@ -1,6 +1,5 @@
 package com.dispatcher.service.controller;
 
-import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.service.service.impl.WarehouseApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,31 +14,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/warehouses")
-@Tag(name = "Warehouses", description = "API for manage warehouses")
-public class WarehouseController extends AbstractWebController {
+@RequestMapping("/warehouses/locations")
+@Tag(name = "Warehouse Locations", description = "API for manage warehouse locations")
+public class WarehouseLocationController extends AbstractWebController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WarehouseController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WarehouseLocationController.class);
 
     private final WarehouseApiService service;
 
-    WarehouseController(WarehouseApiService service) {
+    WarehouseLocationController(WarehouseApiService service) {
         this.service = service;
     }
 
+
+
     @GetMapping(path = "")
-    @Operation(summary = "Get all warehouses")
+    @Operation(summary = "Get all warehouse locations")
     public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,
-                                              HttpServletRequest request,
-                                              HttpServletResponse response) {
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
         return service.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    @Operation(summary = "Get warehouse by ID")
+    @Operation(summary = "Get warehouse location by ID")
     public HashMap<String, Object> findById(@PathVariable Integer id,
-                                            HttpServletRequest request,
-                                            HttpServletResponse response) {
+                              HttpServletRequest request,
+                              HttpServletResponse response) {
         return service.findByPKey(id);
     }
 }

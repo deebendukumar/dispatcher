@@ -27,7 +27,6 @@ public class Address implements Auditable {
     @JsonProperty(value = "country_id")
     private Integer countryId;
 
-
     @JsonProperty(value = "zip")
     private String zip;
 

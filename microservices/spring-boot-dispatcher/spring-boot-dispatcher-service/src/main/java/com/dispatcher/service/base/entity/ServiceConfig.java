@@ -1,13 +1,12 @@
 package com.dispatcher.service.base.entity;
 
+import com.dispatcher.common.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.math.BigInteger;
 
 @JsonPropertyOrder({
         "id"
