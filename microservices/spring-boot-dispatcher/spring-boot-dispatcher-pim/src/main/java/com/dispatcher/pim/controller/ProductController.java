@@ -1,5 +1,6 @@
 package com.dispatcher.pim.controller;
 
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.pim.entity.Product;
 import com.dispatcher.pim.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,25 +30,25 @@ public class ProductController extends AbstractWebController {
     @PostMapping(path = "")
     @Operation(summary = "")
     public Product create(@RequestBody Product product,
-                      HttpServletRequest request,
-                      HttpServletResponse response) {
+                          HttpServletRequest request,
+                          HttpServletResponse response) {
         return service.create(product);
     }
 
     @GetMapping(path = "/{id}")
     @Operation(summary = "")
     public Product find(@PathVariable String id,
-                    HttpServletRequest request,
-                    HttpServletResponse response) {
+                        HttpServletRequest request,
+                        HttpServletResponse response) {
         return service.findByPKey(id);
     }
 
     @GetMapping(path = "")
     @Operation(summary = "")
     public List<Product> findBy(@RequestParam("phone") Optional<String> phone,
-                            @RequestParam("name") Optional<String> name,
-                            HttpServletRequest request,
-                            HttpServletResponse response) {
+                                @RequestParam("name") Optional<String> name,
+                                HttpServletRequest request,
+                                HttpServletResponse response) {
         return service.findAll();
     }
 

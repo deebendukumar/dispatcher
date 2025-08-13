@@ -1,5 +1,6 @@
 package com.dispatcher.pim.controller;
 
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.pim.entity.Hazmat;
 import com.dispatcher.pim.service.HazmatService;
 import io.swagger.v3.oas.annotations.Operation;

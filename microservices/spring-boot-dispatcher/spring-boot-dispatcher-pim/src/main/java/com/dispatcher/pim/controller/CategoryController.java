@@ -1,5 +1,6 @@
 package com.dispatcher.pim.controller;
 
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.pim.entity.Category;
 import com.dispatcher.pim.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,6 +1,9 @@
 package com.dispatcher.service.controller;
 
+import com.dispatcher.common.base.AbstractWebController;
+import com.dispatcher.odoo.facade.WarehouseLocationApiClient;
 import com.dispatcher.service.service.impl.WarehouseApiService;
+import com.dispatcher.service.service.impl.WarehouseLocationApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,9 +23,9 @@ public class WarehouseLocationController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(WarehouseLocationController.class);
 
-    private final WarehouseApiService service;
+    private final WarehouseLocationApiService service;
 
-    WarehouseLocationController(WarehouseApiService service) {
+    WarehouseLocationController(WarehouseLocationApiService service) {
         this.service = service;
     }
 

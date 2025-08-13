@@ -1,5 +1,6 @@
 package com.dispatcher.pim.controller;
 
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.pim.entity.Rack;
 import com.dispatcher.pim.service.RackService;
 import io.swagger.v3.oas.annotations.Operation;
